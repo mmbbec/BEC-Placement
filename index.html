@@ -1,0 +1,2299 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>BEC PLACEMENT 360</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries">
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js">
+    </script>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-container": "#86a0cd",
+                        "on-tertiary-fixed": "#2b1700",
+                        "surface-container-low": "#f4f3f7",
+                        "surface-container-highest": "#e3e2e6",
+                        "surface-dim": "#dad9dd",
+                        "on-secondary-fixed": "#001c38",
+                        "background": "#faf9fd",
+                        "on-error-container": "#93000a",
+                        "primary": "#002045",
+                        "surface-container-high": "#e9e7eb",
+                        "inverse-surface": "#2f3033",
+                        "surface-bright": "#faf9fd",
+                        "secondary": "#1960a3",
+                        "surface-tint": "#455f88",
+                        "on-tertiary": "#ffffff",
+                        "surface-variant": "#e3e2e6",
+                        "on-surface": "#1a1c1e",
+                        "inverse-on-surface": "#f1f0f4",
+                        "primary-fixed": "#d6e3ff",
+                        "on-primary-fixed": "#001b3c",
+                        "on-surface-variant": "#43474e",
+                        "surface-container": "#efedf1",
+                        "on-secondary": "#ffffff",
+                        "secondary-fixed": "#d3e4ff",
+                        "outline-variant": "#c4c6cf",
+                        "on-primary-fixed-variant": "#2d476f",
+                        "on-secondary-container": "#00477f",
+                        "surface": "#faf9fd",
+                        "inverse-primary": "#adc7f7",
+                        "on-tertiary-fixed-variant": "#633f0f",
+                        "tertiary-fixed-dim": "#f2bc82",
+                        "primary-container": "#1a365d",
+                        "secondary-fixed-dim": "#a2c9ff",
+                        "tertiary": "#321b00",
+                        "on-secondary-fixed-variant": "#004881",
+                        "tertiary-fixed": "#ffddba",
+                        "primary-fixed-dim": "#adc7f7",
+                        "on-background": "#1a1c1e",
+                        "error": "#ba1a1a",
+                        "on-error": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "outline": "#74777f",
+                        "tertiary-container": "#4f2e00",
+                        "on-tertiary-container": "#c6955e",
+                        "secondary-container": "#7db6ff",
+                        "on-primary": "#ffffff"
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.25rem",
+                        lg: "0.5rem",
+                        xl: "0.75rem",
+                        full: "9999px"
+                    },
+                    spacing: {
+                        xs: "4px",
+                        "3xl": "64px",
+                        base: "8px",
+                        "2xl": "48px",
+                        sm: "8px",
+                        gutter: "24px",
+                        "container-max": "1440px",
+                        xl: "32px",
+                        md: "16px",
+                        lg: "24px"
+                    },
+                    fontFamily: {
+                        body: ["Inter"],
+                        display: ["Inter"],
+                    },
+                    fontSize: {
+                        "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }],
+                        "display-lg": ["48px", { lineHeight: "56px", letterSpacing: "-0.02em", fontWeight: "700" }],
+                        "headline-lg-mobile": ["24px", { lineHeight: "32px", fontWeight: "600" }],
+                        "body-md": ["16px", { lineHeight: "24px", fontWeight: "400" }],
+                        "label-md": ["14px", { lineHeight: "20px", letterSpacing: "0.01em", fontWeight: "500" }],
+                        "headline-md": ["24px", { lineHeight: "32px", fontWeight: "600" }],
+                        "headline-sm": ["20px", { lineHeight: "28px", fontWeight: "600" }],
+                        "label-sm": ["12px", { lineHeight: "16px", letterSpacing: "0.04em", fontWeight: "600" }],
+                        "headline-lg": ["32px", { lineHeight: "40px", letterSpacing: "-0.01em", fontWeight: "600" }],
+                        "body-sm": ["14px", { lineHeight: "20px", fontWeight: "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .icon-fill {
+            font-variation-settings: 'FILL' 1;
+        }
+        .shadow-level-1 {
+            box-shadow: 0px 2px 4px rgba(26, 54, 93, 0.06);
+        }
+        .shadow-level-2 {
+            box-shadow: 0px 4px 12px rgba(26, 54, 93, 0.12);
+        }
+        .view {
+            display: none;
+            animation: fadeSlideUp 0.3s ease-out;
+        }
+        .view.active {
+            display: block;
+        }
+        @keyframes fadeSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .sidebar-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 16px;
+            border-radius: 8px;
+            transition: all 0.2s;
+            cursor: pointer;
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+        }
+        .sidebar-link:hover {
+            background: rgba(255, 255, 255, 0.08);
+            color: #ffffff;
+        }
+        .sidebar-link.active {
+            background: #1960a3;
+            color: #ffffff;
+        }
+        .bottom-nav-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 4px 12px;
+            border-radius: 9999px;
+            font-size: 12px;
+            font-weight: 600;
+            color: #43474e;
+            transition: all 0.2s;
+            cursor: pointer;
+            text-decoration: none;
+            min-width: 56px;
+        }
+        .bottom-nav-link.active {
+            background: #7db6ff;
+            color: #00477f;
+        }
+        .bottom-nav-link:hover {
+            background: #f4f3f7;
+        }
+        @media (max-width: 768px) {
+            .hide-mobile {
+                display: none !important;
+            }
+            .show-mobile {
+                display: flex !important;
+            }
+        }
+        @media (min-width: 769px) {
+            .hide-mobile {
+                display: flex !important;
+            }
+            .show-mobile {
+                display: none !important;
+            }
+        }
+        .toast-container {
+            position: fixed;
+            bottom: 80px;
+            right: 24px;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            max-width: 380px;
+        }
+        .toast {
+            padding: 14px 20px;
+            border-radius: 12px;
+            background: #1a1c1e;
+            color: #ffffff;
+            box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.2);
+            animation: slideIn 0.3s ease-out;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .toast.success {
+            background: #006874;
+        }
+        .toast.error {
+            background: #93000a;
+        }
+        .toast.warning {
+            background: #633f0f;
+        }
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        .skeleton {
+            background: linear-gradient(90deg, #e3e2e6 25%, #f4f3f7 50%, #e3e2e6 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+            border-radius: 8px;
+        }
+        @keyframes shimmer {
+            0% {
+                background-position: 200% 0;
+            }
+            100% {
+                background-position: -200% 0;
+            }
+        }
+        .table-wrap {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        .table-wrap table {
+            min-width: 700px;
+            width: 100%;
+        }
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(4px);
+            z-index: 999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+        .modal-overlay.open {
+            display: flex;
+        }
+        .modal-box {
+            background: #ffffff;
+            border-radius: 16px;
+            max-width: 640px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 32px;
+            box-shadow: 0px 24px 48px rgba(0, 0, 0, 0.2);
+            animation: modalIn 0.25s ease-out;
+        }
+        @keyframes modalIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95) translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 2px 12px;
+            border-radius: 9999px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            line-height: 20px;
+        }
+        .status-badge.open {
+            background: rgba(0, 104, 116, 0.1);
+            color: #006874;
+        }
+        .status-badge.closed {
+            background: rgba(186, 26, 26, 0.1);
+            color: #93000a;
+        }
+        .status-badge.upcoming {
+            background: #e3e2e6;
+            color: #43474e;
+        }
+        .status-badge.shortlisting {
+            background: rgba(186, 26, 26, 0.1);
+            color: #93000a;
+        }
+        .status-badge.completed {
+            background: rgba(0, 104, 116, 0.1);
+            color: #006874;
+        }
+        .status-badge.placed {
+            background: rgba(0, 104, 116, 0.15);
+            color: #006874;
+        }
+        .status-badge.eligible {
+            background: rgba(0, 104, 116, 0.1);
+            color: #006874;
+        }
+        .status-badge.not-eligible {
+            background: rgba(186, 26, 26, 0.1);
+            color: #93000a;
+        }
+        .status-badge.frozen {
+            background: rgba(25, 96, 163, 0.15);
+            color: #00477f;
+        }
+        .status-badge.submitted {
+            background: rgba(0, 104, 116, 0.12);
+            color: #006874;
+        }
+        .status-badge.pending {
+            background: #fef3c7;
+            color: #92400e;
+        }
+        .bg-institutional {
+            background-color: #faf9fd;
+            background-image: radial-gradient(at 0% 0%, rgba(26, 54, 93, 0.04) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(25, 96, 163, 0.04) 0px, transparent 50%);
+        }
+        .loading-spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #002045;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        .sidebar-scroll {
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+        }
+        .sidebar-scroll::-webkit-scrollbar {
+            width: 4px;
+        }
+        .sidebar-scroll::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .sidebar-scroll::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+        }
+        .drive-card {
+            transition: all 0.25s ease;
+        }
+        .drive-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0px 8px 24px rgba(26, 54, 93, 0.12);
+        }
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 14px;
+            border-radius: 8px;
+            transition: all 0.2s;
+            cursor: pointer;
+            color: #43474e;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .nav-link:hover {
+            background: #f4f3f7;
+        }
+        .nav-link.active {
+            background: #d6e3ff;
+            color: #002045;
+        }
+        .print-only {
+            display: none;
+        }
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+            .print-only {
+                display: block !important;
+            }
+            body {
+                background: white !important;
+            }
+            .modal-box {
+                box-shadow: none !important;
+                border: 1px solid #ddd !important;
+            }
+        }
+        .profile-field {
+            transition: all 0.2s;
+        }
+        .profile-field.frozen {
+            opacity: 0.7;
+            background: #f4f3f7;
+        }
+        .profile-field.frozen input,
+        .profile-field.frozen select,
+        .profile-field.frozen textarea {
+            background: #f4f3f7;
+            cursor: not-allowed;
+            border-color: #c4c6cf;
+        }
+        .signature-line {
+            border-bottom: 1px solid #1a1c1e;
+            min-width: 180px;
+            display: inline-block;
+            margin: 0 8px;
+        }
+        .role-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 2px 10px;
+            border-radius: 9999px;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+        .role-chip.admin {
+            background: #002045;
+            color: #fff;
+        }
+        .role-chip.principal {
+            background: #1a365d;
+            color: #fff;
+        }
+        .role-chip.officer {
+            background: #1960a3;
+            color: #fff;
+        }
+        .role-chip.hod {
+            background: #7db6ff;
+            color: #00477f;
+        }
+        .role-chip.clerk {
+            background: #c4c6cf;
+            color: #1a1c1e;
+        }
+        .role-chip.student {
+            background: #d6e3ff;
+            color: #002045;
+        }
+        .perm-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .perm-list li {
+            padding: 6px 0;
+            border-bottom: 1px solid #f0f0f0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+        }
+        .perm-list li:last-child {
+            border-bottom: none;
+        }
+        .perm-list li .material-symbols-outlined {
+            font-size: 18px;
+            color: #1960a3;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================================ -->
+    <!-- TOAST CONTAINER -->
+    <!-- ============================================================ -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- ============================================================ -->
+    <!-- MODAL CONTAINER -->
+    <!-- ============================================================ -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-box" id="modalBox">
+            <div id="modalContent"></div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- VIEW: LOGIN -->
+    <!-- ============================================================ -->
+    <div class="view active" id="view-login">
+        <div class="min-h-screen flex items-center justify-center bg-institutional p-4 md:p-6">
+            <div class="w-full max-w-5xl bg-surface-container-lowest rounded-xl shadow-level-2 overflow-hidden flex flex-col md:flex-row">
+                <div class="w-full md:w-1/2 p-6 md:p-10 bg-primary text-on-primary flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-2 mb-6">
+                            <span class="material-symbols-outlined text-3xl icon-fill">school</span>
+                            <h1 class="text-xl font-bold tracking-tight" id="collegeNameHeader">BEC PLACEMENT 360</h1>
+                        </div>
+                        <div class="space-y-3 mt-8">
+                            <h2 class="text-3xl md:text-4xl font-bold leading-tight" id="collegeNameSub">Basaveshwar Engineering College, Bagalkote.</h2>
+                            <p class="text-base text-on-primary-container max-w-md">Placement Management &amp; Automation System.</p>
+                        </div>
+                    </div>
+                    <div class="mt-8 pt-4 border-t border-on-primary-fixed-variant">
+                        <p class="text-sm text-secondary-fixed">Academic Year 2026–27</p>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 p-6 md:p-10 flex flex-col justify-center bg-surface-container-lowest">
+                    <div class="max-w-sm w-full mx-auto">
+                        <div class="mb-6 text-center md:text-left">
+                            <h3 class="text-2xl font-bold text-primary mb-1">Welcome Back</h3>
+                            <p class="text-sm text-on-surface-variant">Enter your credentials to access the portal.</p>
+                        </div>
+                        <form id="loginForm" class="space-y-5">
+                            <div>
+                                <label class="block text-sm font-medium text-on-surface mb-1" for="userId">Email / User ID</label>
+                                <div class="relative">
+                                    <span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-outline">
+                                        <span class="material-symbols-outlined text-xl">badge</span>
+                                    </span>
+                                    <input class="w-full pl-10 pr-3 py-3 border border-outline-variant rounded-lg bg-surface-container-lowest text-on-surface text-sm focus:outline-none focus:ring-2 focus:ring-secondary focus:border-secondary transition-colors" id="userId" placeholder="email@bec.edu.in" type="text" required />
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-on-surface mb-1" for="password">Password</label>
+                                <div class="relative">
+                                    <span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-outline">
+                                        <span class="material-symbols-outlined text-xl">lock</span>
+                                    </span>
+                                    <input class="w-full pl-10 pr-3 py-3 border border-outline-variant rounded-lg bg-surface-container-lowest text-on-surface text-sm focus:outline-none focus:ring-2 focus:ring-secondary focus:border-secondary transition-colors" id="password" placeholder="Enter password" type="password" required />
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-on-surface mb-1">Login as</label>
+                                <select id="roleSelect" class="w-full px-3 py-3 border border-outline-variant rounded-lg bg-surface-container-lowest text-on-surface text-sm focus:outline-none focus:ring-2 focus:ring-secondary focus:border-secondary transition-colors">
+                                    <option value="admin">Admin</option>
+                                    <option value="principal">Principal</option>
+                                    <option value="officer">Placement Officer</option>
+                                    <option value="clerk">Office Clerk</option>
+                                    <option value="hod">HOD</option>
+                                    <option value="student" selected>Student</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="w-full flex items-center justify-center gap-2 bg-primary text-on-primary font-medium py-3 px-4 rounded-lg hover:bg-primary-container hover:shadow-level-2 transition-all">
+                                <span>Login</span>
+                                <span class="material-symbols-outlined text-lg">arrow_forward</span>
+                            </button>
+                            <div class="flex flex-col sm:flex-row items-center justify-between gap-3 pt-2">
+                                <a class="text-sm text-secondary hover:text-primary transition-colors" href="#">Forgot Password?</a>
+                                <a class="text-sm text-secondary hover:text-primary transition-colors" href="#">Account Recovery</a>
+                            </div>
+                        </form>
+                        <div class="mt-6 pt-4 border-t border-outline-variant flex justify-center md:justify-start">
+                            <p class="text-xs text-on-surface-variant flex items-center gap-1">
+                                <span class="material-symbols-outlined text-sm">verified_user</span>
+                                Secure Institutional Access
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="absolute bottom-4 w-full text-center pointer-events-none">
+                <p class="text-xs text-on-surface-variant bg-surface-container-lowest/80 backdrop-blur-sm px-4 py-2 rounded-full inline-block shadow-level-1">
+                    Created by Dr. Mahadev Biradar
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- VIEW: APP (after login) -->
+    <!-- ============================================================ -->
+    <div class="view" id="view-app">
+        <div class="flex h-screen overflow-hidden bg-background">
+
+            <!-- SIDEBAR (Desktop) -->
+            <aside class="hidden lg:flex flex-col h-full w-[280px] bg-primary text-on-primary shadow-level-2 shrink-0 sidebar-scroll" id="sidebar">
+                <div class="flex items-center gap-3 px-4 py-5 border-b border-on-primary-fixed-variant/30">
+                    <div class="w-10 h-10 rounded-lg bg-surface-container-lowest flex items-center justify-center overflow-hidden shrink-0">
+                        <span class="material-symbols-outlined text-primary text-2xl">school</span>
+                    </div>
+                    <div>
+                        <h1 class="text-sm font-bold" id="sidebarCollegeName">Placement Portal</h1>
+                        <p class="text-xs text-on-primary-container opacity-80" id="sidebarCollegeSub">Basaveshwar Eng. College</p>
+                    </div>
+                </div>
+                <nav class="flex-1 px-3 py-4 space-y-0.5" id="sidebarNav">
+                    <!-- Dynamically populated -->
+                </nav>
+                <div class="px-3 py-4 border-t border-on-primary-fixed-variant/30 space-y-0.5">
+                    <a class="sidebar-link text-sm" data-nav="settings">
+                        <span class="material-symbols-outlined text-xl">settings</span> Settings
+                    </a>
+                    <a class="sidebar-link text-sm" id="logoutBtn">
+                        <span class="material-symbols-outlined text-xl">logout</span> Logout
+                    </a>
+                    <div class="mt-3 text-xs text-on-primary-container/50 text-center">
+                        BEC PLACEMENT 360 © 2026
+                    </div>
+                </div>
+            </aside>
+
+            <!-- MAIN CONTENT -->
+            <div class="flex-1 flex flex-col min-h-screen w-full overflow-hidden">
+
+                <!-- TOP HEADER -->
+                <header class="bg-surface shadow-level-1 sticky top-0 z-40 flex items-center justify-between px-4 md:px-6 h-16 shrink-0">
+                    <div class="flex items-center gap-3">
+                        <button class="lg:hidden p-2 text-primary hover:bg-surface-container-low rounded-full" id="mobileMenuBtn">
+                            <span class="material-symbols-outlined">menu</span>
+                        </button>
+                        <span class="font-bold text-primary text-base md:text-lg" id="headerCollegeName">BEC PLACEMENT 360</span>
+                        <span class="hidden md:inline text-xs text-on-surface-variant bg-surface-container-low px-2 py-1 rounded-full">2026–27</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <div class="hidden md:flex items-center gap-1 bg-surface-container-low px-3 py-1.5 rounded-full border border-outline-variant">
+                            <span class="material-symbols-outlined text-on-surface-variant text-lg">search</span>
+                            <input class="bg-transparent border-none focus:ring-0 text-sm w-40 text-on-surface outline-none" placeholder="Search..." type="text" id="globalSearch" />
+                        </div>
+                        <button class="p-2 text-on-surface-variant hover:bg-surface-container-high rounded-full relative" id="notifBell">
+                            <span class="material-symbols-outlined">notifications</span>
+                            <span class="absolute top-1.5 right-1.5 w-2 h-2 bg-error rounded-full"></span>
+                        </button>
+                        <button class="p-2 text-on-surface-variant hover:bg-surface-container-high rounded-full hidden md:flex">
+                            <span class="material-symbols-outlined">help</span>
+                        </button>
+                        <div class="flex items-center gap-2 ml-1">
+                            <div class="w-8 h-8 rounded-full bg-primary-fixed flex items-center justify-center text-primary font-medium text-sm overflow-hidden border border-outline-variant" id="avatarDisplay">
+                                <span class="material-symbols-outlined text-xl">person</span>
+                            </div>
+                            <span class="hidden md:block text-sm font-medium text-on-surface" id="userNameDisplay">User</span>
+                            <span class="hidden md:block text-xs text-on-surface-variant bg-surface-container-low px-2 py-0.5 rounded-full" id="userRoleDisplay">Student</span>
+                        </div>
+                    </div>
+                </header>
+
+                <!-- PAGE CONTENT -->
+                <main class="flex-1 overflow-y-auto p-4 md:p-6 bg-surface-bright pb-24 lg:pb-6" id="mainContent">
+                    <div id="pageLoader" class="flex items-center justify-center h-64">
+                        <div class="loading-spinner"></div>
+                    </div>
+                </main>
+
+                <!-- BOTTOM NAV (Mobile) -->
+                <nav class="lg:hidden fixed bottom-0 left-0 w-full bg-surface-container-lowest border-t border-outline-variant shadow-[0_-2px_10px_rgba(0,0,0,0.05)] flex justify-around items-center px-2 py-1.5 z-50 rounded-t-xl" id="bottomNav">
+                    <!-- Dynamically populated -->
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- JAVASCRIPT -->
+    <!-- ============================================================ -->
+    <script>
+        // ================================================================
+        // API CONFIGURATION
+        // ================================================================
+        const API_URL = 'https://script.google.com/macros/s/AKfycbwanTHtskxU_-4X2sGPjdGwyLCNCDustWzFUkP015fugiB6UADeQRFMV0iyNqBPowDU/exec';
+        // ================================================================
+        // API HELPER
+        // ================================================================
+        async function callAPI(action, payload = {}) {
+            try {
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ action, ...payload })
+                });
+                return await response.json();
+            } catch (error) {
+                console.error('API Error:', error);
+                return { success: false, message: error.message };
+            }
+        }
+
+        // ================================================================
+        // TOAST & MODAL
+        // ================================================================
+        function showToast(message, type = 'info') {
+            const container = document.getElementById('toastContainer');
+            const colors = { info: '#1a1c1e', success: '#006874', error: '#93000a', warning: '#633f0f' };
+            const el = document.createElement('div');
+            el.className = `toast ${type}`;
+            el.style.background = colors[type] || colors.info;
+            el.innerHTML =
+                `<span class="material-symbols-outlined">${type === 'success' ? 'check_circle' : type === 'error' ? 'error' : type === 'warning' ? 'warning' : 'info'}</span> ${message}`;
+            container.appendChild(el);
+            setTimeout(() => { el.style.opacity = '0';
+                el.style.transform = 'translateX(40px)';
+                setTimeout(() => el.remove(), 300); }, 4000);
+        }
+
+        function openModal(content) {
+            document.getElementById('modalContent').innerHTML = content;
+            document.getElementById('modalOverlay').classList.add('open');
+        }
+
+        function closeModal() {
+            document.getElementById('modalOverlay').classList.remove('open');
+        }
+        document.getElementById('modalOverlay').addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+        });
+
+        // ================================================================
+        // ROLE RESPONSIBILITIES DATA
+        // ================================================================
+        const ROLE_RESPONSIBILITIES = {
+            admin: {
+                label: 'Admin',
+                icon: 'admin_panel_settings',
+                color: 'admin',
+                permissions: [
+                    'Full system configuration',
+                    'Add / Edit / Delete all users',
+                    'Manage all data (students, companies, drives, placements)',
+                    'View all reports and analytics',
+                    'System settings and maintenance'
+                ],
+                features: ['Dashboard', 'Users', 'Students', 'Companies', 'Drives', 'Applications', 'Reports', 'Analytics',
+                    'Settings'
+                ]
+            },
+            principal: {
+                label: 'Principal',
+                icon: 'account_balance',
+                color: 'principal',
+                permissions: [
+                    'Institutional overview dashboard',
+                    'Add / Edit HODs (username, email, department)',
+                    'NBA / NAAC reports',
+                    'View institutional statistics',
+                    'Print and export reports'
+                ],
+                features: ['Dashboard', 'HOD Management', 'NBA/NAAC Reports', 'Institutional Stats', 'Reports']
+            },
+            officer: {
+                label: 'Placement Officer',
+                icon: 'work',
+                color: 'officer',
+                permissions: [
+                    'Manage companies and drives',
+                    'Review and shortlist applications',
+                    'Manage placement offers',
+                    'View placement reports',
+                    'Coordinate with students'
+                ],
+                features: ['Dashboard', 'Companies', 'Drives', 'Applications', 'Shortlisting', 'Offers', 'Placements',
+                    'Reports'
+                ]
+            },
+            hod: {
+                label: 'HOD',
+                icon: 'account_balance',
+                color: 'hod',
+                permissions: [
+                    'Department dashboard view',
+                    'View department students',
+                    'Department reports',
+                    'Monitor student eligibility'
+                ],
+                features: ['Department Dashboard', 'Dept. Students', 'Dept. Reports']
+            },
+            clerk: {
+                label: 'Office Clerk',
+                icon: 'edit_note',
+                color: 'clerk',
+                permissions: [
+                    'Data entry for placements',
+                    'View placement records',
+                    'Generate reports',
+                    'Maintain records'
+                ],
+                features: ['Dashboard', 'Data Entry', 'Placements', 'Reports']
+            },
+            student: {
+                label: 'Student',
+                icon: 'person',
+                color: 'student',
+                permissions: [
+                    'View and update profile',
+                    'Browse and apply for drives',
+                    'Track application status',
+                    'Upload resume',
+                    'View placement form'
+                ],
+                features: ['Dashboard', 'Browse Drives', 'My Applications', 'Placement Form', 'Profile']
+            }
+        };
+
+        // ================================================================
+        // APP STATE
+        // ================================================================
+        const AppState = {
+            currentUser: null,
+            role: 'student',
+            users: [],
+            data: {
+                students: [],
+                companies: [],
+                drives: [],
+                applications: [],
+                placements: [],
+                notifications: [],
+                placementResults: [],
+                config: {}
+            }
+        };
+
+        let currentView = 'login';
+        let chartInstances = {};
+
+        // ================================================================
+        // DATA LOADING
+        // ================================================================
+        async function loadAllData() {
+            try {
+                const [students, companies, drives, applications, placements, notifications, placementResults, config,
+                    users
+                ] = await Promise.all([
+                    callAPI('getStudents'),
+                    callAPI('getCompanies'),
+                    callAPI('getDrives'),
+                    callAPI('getApplications'),
+                    callAPI('getPlacements'),
+                    callAPI('getNotifications'),
+                    callAPI('getPlacementResults'),
+                    callAPI('getConfig'),
+                    callAPI('getUsers')
+                ]);
+
+                AppState.data.students = students.success ? students.students : [];
+                AppState.data.companies = companies.success ? companies.companies : [];
+                AppState.data.drives = drives.success ? drives.drives : [];
+                AppState.data.applications = applications.success ? applications.applications : [];
+                AppState.data.placements = placements.success ? placements.placements : [];
+                AppState.data.notifications = notifications.success ? notifications.notifications : [];
+                AppState.data.placementResults = placementResults.success ? placementResults.results : [];
+                AppState.data.config = config.success ? config.config : {};
+                AppState.users = users.success ? users.users : [];
+
+                ['students', 'companies', 'drives', 'applications', 'placements', 'notifications', 'placementResults']
+                .forEach(key => {
+                    if (!AppState.data[key]) AppState.data[key] = [];
+                });
+
+                const collegeName = AppState.data.config.CollegeName || 'Basaveshwar Engineering College, Bagalkote';
+                document.getElementById('collegeNameHeader').textContent = collegeName.toUpperCase() + ' PLACEMENT 360';
+                document.getElementById('collegeNameSub').textContent = collegeName;
+                document.getElementById('sidebarCollegeName').textContent = collegeName;
+                document.getElementById('sidebarCollegeSub').textContent = collegeName.length > 20 ? collegeName.substring(0,
+                    20) + '...' : collegeName;
+                document.getElementById('headerCollegeName').textContent = collegeName.toUpperCase() + ' PLACEMENT 360';
+
+                return true;
+            } catch (e) {
+                console.error('Failed to load data', e);
+                showToast('Failed to load data from server', 'error');
+                return false;
+            }
+        }
+
+        // ================================================================
+        // SIDEBAR / BOTTOM NAV (Role-based)
+        // ================================================================
+        function getSidebarItems(role) {
+            const base = [
+                { key: 'dashboard', label: 'Dashboard', icon: 'dashboard' }
+            ];
+            const roleMap = {
+                admin: [
+                    { key: 'users', label: 'User Management', icon: 'admin_panel_settings' },
+                    { key: 'students', label: 'Students', icon: 'group' },
+                    { key: 'companies', label: 'Companies', icon: 'business' },
+                    { key: 'drives', label: 'Drives', icon: 'work' },
+                    { key: 'applications', label: 'Applications', icon: 'description' },
+                    { key: 'reports', label: 'Reports', icon: 'assessment' },
+                    { key: 'analytics', label: 'Analytics', icon: 'insights' },
+                ],
+                principal: [
+                    { key: 'hod-management', label: 'HOD Management', icon: 'how_to_reg' },
+                    { key: 'principal-reports', label: 'NBA/NAAC Reports', icon: 'monitoring' },
+                    { key: 'principal-stats', label: 'Institutional Stats', icon: 'insights' },
+                    { key: 'reports', label: 'Reports', icon: 'assessment' },
+                ],
+                officer: [
+                    { key: 'students', label: 'Students', icon: 'group' },
+                    { key: 'companies', label: 'Companies', icon: 'business' },
+                    { key: 'drives', label: 'Drives', icon: 'work' },
+                    { key: 'applications', label: 'Applications', icon: 'description' },
+                    { key: 'shortlisting', label: 'Shortlisting', icon: 'how_to_reg' },
+                    { key: 'offers', label: 'Offers', icon: 'contract' },
+                    { key: 'placements', label: 'Placements', icon: 'school' },
+                    { key: 'reports', label: 'Reports', icon: 'assessment' },
+                ],
+                hod: [
+                    { key: 'hod-dashboard', label: 'Department', icon: 'account_balance' },
+                    { key: 'students', label: 'Dept. Students', icon: 'group' },
+                    { key: 'reports', label: 'Dept. Reports', icon: 'assessment' },
+                ],
+                clerk: [
+                    { key: 'clerk-entry', label: 'Data Entry', icon: 'edit_note' },
+                    { key: 'placements', label: 'Placements', icon: 'school' },
+                    { key: 'reports', label: 'Reports', icon: 'assessment' },
+                ],
+                student: [
+                    { key: 'student-drives', label: 'Browse Drives', icon: 'explore' },
+                    { key: 'my-applications', label: 'My Applications', icon: 'assignment_turned_in' },
+                    { key: 'student-form', label: 'Placement Form', icon: 'description' },
+                    { key: 'profile', label: 'My Profile', icon: 'person' },
+                ]
+            };
+            return [...base, ...(roleMap[role] || [])];
+        }
+
+        function getBottomNavItems(role) {
+            const map = {
+                admin: [
+                    { key: 'dashboard', label: 'Home', icon: 'home' },
+                    { key: 'users', label: 'Users', icon: 'admin_panel_settings' },
+                    { key: 'companies', label: 'Companies', icon: 'business' },
+                    { key: 'drives', label: 'Drives', icon: 'work' },
+                    { key: 'reports', label: 'Reports', icon: 'assessment' },
+                ],
+                principal: [
+                    { key: 'dashboard', label: 'Home', icon: 'home' },
+                    { key: 'hod-management', label: 'HODs', icon: 'how_to_reg' },
+                    { key: 'principal-reports', label: 'NBA/NAAC', icon: 'monitoring' },
+                    { key: 'reports', label: 'Reports', icon: 'assessment' },
+                ],
+                officer: [
+                    { key: 'dashboard', label: 'Home', icon: 'home' },
+                    { key: 'drives', label: 'Drives', icon: 'work' },
+                    { key: 'applications', label: 'Apps', icon: 'description' },
+                    { key: 'shortlisting', label: 'Shortlist', icon: 'how_to_reg' },
+                    { key: 'reports', label: 'Reports', icon: 'assessment' },
+                ],
+                clerk: [
+                    { key: 'dashboard', label: 'Home', icon: 'home' },
+                    { key: 'clerk-entry', label: 'Entry', icon: 'edit_note' },
+                    { key: 'placements', label: 'Placements', icon: 'school' },
+                    { key: 'reports', label: 'Reports', icon: 'assessment' },
+                ],
+                student: [
+                    { key: 'dashboard', label: 'Home', icon: 'home' },
+                    { key: 'student-drives', label: 'Drives', icon: 'explore' },
+                    { key: 'my-applications', label: 'Applied', icon: 'assignment_turned_in' },
+                    { key: 'student-form', label: 'Form', icon: 'description' },
+                    { key: 'profile', label: 'Profile', icon: 'person' },
+                ],
+                hod: [
+                    { key: 'hod-dashboard', label: 'Home', icon: 'home' },
+                    { key: 'students', label: 'Students', icon: 'group' },
+                    { key: 'reports', label: 'Reports', icon: 'assessment' },
+                ],
+            };
+            return map[role] || map.student;
+        }
+
+        function updateSidebar(activeKey, role) {
+            const nav = document.getElementById('sidebarNav');
+            const items = getSidebarItems(role);
+            nav.innerHTML = items.map(item =>
+                `<a class="sidebar-link ${item.key === activeKey ? 'active' : ''}" data-nav="${item.key}">
+                    <span class="material-symbols-outlined text-xl">${item.icon}</span> ${item.label}
+                </a>`
+            ).join('');
+            nav.querySelectorAll('[data-nav]').forEach(el => {
+                el.addEventListener('click', () => navigateTo(el.dataset.nav));
+            });
+            // Role chip in sidebar
+            const roleChip = document.querySelector('#sidebar .role-chip');
+            if (!roleChip) {
+                const footer = document.querySelector('#sidebar .border-t');
+                if (footer) {
+                    const chip = document.createElement('div');
+                    chip.className = `role-chip ${role} mt-2 text-xs`;
+                    chip.textContent = role.toUpperCase();
+                    footer.prepend(chip);
+                }
+            } else {
+                roleChip.className = `role-chip ${role}`;
+                roleChip.textContent = role.toUpperCase();
+            }
+        }
+
+        function updateBottomNav(activeKey, role) {
+            const nav = document.getElementById('bottomNav');
+            const items = getBottomNavItems(role);
+            nav.innerHTML = items.map(item =>
+                `<a class="bottom-nav-link ${item.key === activeKey ? 'active' : ''}" data-nav="${item.key}">
+                    <span class="material-symbols-outlined">${item.icon}</span>
+                    <span>${item.label}</span>
+                </a>`
+            ).join('');
+            nav.querySelectorAll('[data-nav]').forEach(el => {
+                el.addEventListener('click', () => navigateTo(el.dataset.nav));
+            });
+        }
+
+        // ================================================================
+        // ROUTER
+        // ================================================================
+        function showView(viewId) {
+            document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+            const el = document.getElementById('view-' + viewId);
+            if (el) el.classList.add('active');
+            currentView = viewId;
+        }
+
+        function navigateTo(page) {
+            if (!AppState.currentUser) { showView('login'); return; }
+            const role = AppState.currentUser.role;
+            showView('app');
+            renderAppPage(page, role);
+            updateSidebar(page, role);
+            updateBottomNav(page, role);
+        }
+
+        function renderAppPage(page, role) {
+            const container = document.getElementById('mainContent');
+            container.innerHTML = `<div class="flex items-center justify-center h-64"><div class="loading-spinner"></div></div>`;
+            renderPageContent(page, role, container);
+        }
+
+        function renderPageContent(page, role, container) {
+            const data = AppState.data;
+            switch (page) {
+                case 'dashboard':
+                    if (role === 'admin') renderAdminDashboard(container, data);
+                    else if (role === 'principal') renderPrincipalDashboard(container, data);
+                    else if (role === 'officer') renderOfficerDashboard(container, data);
+                    else if (role === 'clerk') renderClerkDashboard(container, data);
+                    else if (role === 'student') renderStudentDashboard(container, data);
+                    else if (role === 'hod') renderHODDashboard(container, data);
+                    break;
+                case 'users':
+                    renderUserManagement(container, data);
+                    break;
+                case 'hod-management':
+                    renderHODManagement(container, data);
+                    break;
+                case 'students':
+                    renderStudents(container, data, role);
+                    break;
+                case 'companies':
+                    renderCompanies(container, data, role);
+                    break;
+                case 'drives':
+                    renderDrives(container, data, role);
+                    break;
+                case 'applications':
+                    renderApplications(container, data, role);
+                    break;
+                case 'reports':
+                    renderReports(container, data, role);
+                    break;
+                case 'analytics':
+                    renderAnalytics(container, data);
+                    break;
+                case 'profile':
+                    renderProfile(container, data);
+                    break;
+                case 'shortlisting':
+                    renderShortlisting(container, data);
+                    break;
+                case 'offers':
+                    renderOffers(container, data);
+                    break;
+                case 'placements':
+                    renderPlacements(container, data);
+                    break;
+                case 'hod-dashboard':
+                    renderHODDashboard(container, data);
+                    break;
+                case 'student-drives':
+                    renderStudentDrives(container, data);
+                    break;
+                case 'my-applications':
+                    renderMyApplications(container, data);
+                    break;
+                case 'student-form':
+                    renderStudentForm(container, data);
+                    break;
+                case 'principal-reports':
+                    renderPrincipalReports(container, data);
+                    break;
+                case 'principal-stats':
+                    renderPrincipalStats(container, data);
+                    break;
+                case 'clerk-entry':
+                    renderClerkEntry(container, data);
+                    break;
+                case 'settings':
+                    renderSettings(container);
+                    break;
+                default:
+                    container.innerHTML =
+                        `<div class="p-8 text-center text-on-surface-variant"><h2 class="text-2xl font-bold text-primary">Page</h2><p>Content coming soon.</p></div>`;
+            }
+        }
+
+        // ================================================================
+        // AUTHENTICATION (User Management based)
+        // ================================================================
+        async function handleLogin(e) {
+            e.preventDefault();
+            const userId = document.getElementById('userId').value.trim();
+            const password = document.getElementById('password').value.trim();
+            const selectedRole = document.getElementById('roleSelect').value;
+
+            if (!userId) { showToast('Please enter your email / ID', 'error'); return; }
+            if (!password) { showToast('Please enter your password', 'error'); return; }
+
+            // Hardcoded admin fallback
+            if (userId === 'mmbbec@gmail.com' && password === 'Mmb@1980') {
+                const user = { id: userId, name: 'Admin', email: userId, role: 'admin', department: '' };
+                AppState.currentUser = user;
+                document.getElementById('userNameDisplay').textContent = user.name;
+                document.getElementById('userRoleDisplay').textContent = 'Admin';
+                document.getElementById('avatarDisplay').innerHTML =
+                    `<span class="text-sm font-medium">A</span>`;
+                await loadAllData();
+                showView('app');
+                navigateTo('dashboard');
+                showToast('Welcome, Admin!', 'success');
+                return;
+            }
+
+            // Authenticate against users sheet
+            await loadAllData();
+            const userRecord = (AppState.users || []).find(u =>
+                (u.email === userId || u.username === userId || u.userId === userId) &&
+                u.password === password &&
+                u.status === 'Active'
+            );
+
+            if (!userRecord) {
+                showToast('Invalid credentials or user not found', 'error');
+                return;
+            }
+
+            // Check role match
+            if (userRecord.role !== selectedRole) {
+                showToast(`You are registered as ${userRecord.role}. Please select the correct role.`, 'warning');
+                return;
+            }
+
+            const user = {
+                id: userRecord.userId || userRecord.email,
+                name: userRecord.username || userRecord.name || 'User',
+                email: userRecord.email,
+                role: userRecord.role,
+                department: userRecord.department || '',
+                userId: userRecord.userId
+            };
+            AppState.currentUser = user;
+            document.getElementById('userNameDisplay').textContent = user.name;
+            document.getElementById('userRoleDisplay').textContent = user.role.charAt(0).toUpperCase() + user.role.slice(1);
+            document.getElementById('avatarDisplay').innerHTML =
+                `<span class="text-sm font-medium">${user.name.charAt(0)}</span>`;
+            await loadAllData();
+            showView('app');
+            navigateTo('dashboard');
+            showToast(`Welcome, ${user.name}!`, 'success');
+        }
+
+        // ================================================================
+        // LOGOUT
+        // ================================================================
+        function logout() {
+            AppState.currentUser = null;
+            AppState.users = [];
+            AppState.data = { students: [], companies: [], drives: [], applications: [], placements: [],
+                notifications: [], placementResults: [], config: {} };
+            showView('login');
+            document.getElementById('userId').value = '';
+            document.getElementById('password').value = '';
+            showToast('Logged out successfully', 'info');
+        }
+
+        // ================================================================
+        // USER MANAGEMENT (Admin)
+        // ================================================================
+        async function renderUserManagement(container, data) {
+            const users = AppState.users || [];
+            const roles = ['admin', 'principal', 'officer', 'hod', 'clerk', 'student'];
+
+            container.innerHTML = `
+                <div class="space-y-5">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                        <div>
+                            <h2 class="text-2xl font-bold text-primary">User Management</h2>
+                            <p class="text-sm text-on-surface-variant">Add, edit, or remove system users. Manage roles and permissions.</p>
+                        </div>
+                        <button class="px-4 py-2 bg-primary text-on-primary rounded-lg text-sm font-medium hover:bg-primary-container transition-colors flex items-center gap-2" onclick="showAddUserForm()">
+                            <span class="material-symbols-outlined text-lg">add</span> Add User
+                        </button>
+                    </div>
+
+                    <div class="bg-surface-container-lowest rounded-xl shadow-level-1 border border-outline-variant/30 overflow-hidden">
+                        <div class="table-wrap">
+                            <table>
+                                <thead class="bg-surface-container-low">
+                                    <tr>
+                                        <th class="py-3 px-4 text-left text-xs font-semibold text-on-surface-variant uppercase tracking-wider">User</th>
+                                        <th class="py-3 px-4 text-left text-xs font-semibold text-on-surface-variant uppercase tracking-wider">Email</th>
+                                        <th class="py-3 px-4 text-left text-xs font-semibold text-on-surface-variant uppercase tracking-wider">Role</th>
+                                        <th class="py-3 px-4 text-left text-xs font-semibold text-on-surface-variant uppercase tracking-wider">Department</th>
+                                        <th class="py-3 px-4 text-left text-xs font-semibold text-on-surface-variant uppercase tracking-wider">Status</th>
+                                        <th class="py-3 px-4 text-left text-xs font-semibold text-on-surface-variant uppercase tracking-wider">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    ${users.length ? users.map(u => `
+                                        <tr class="hover:bg-surface-container-low transition-colors border-b border-outline-variant/30">
+                                            <td class="py-3 px-4">
+                                                <div class="flex items-center gap-3">
+                                                    <div class="w-8 h-8 rounded-full bg-primary-fixed flex items-center justify-center text-primary font-semibold text-sm">${(u.username || u.name || 'U').charAt(0).toUpperCase()}</div>
+                                                    <div>
+                                                        <div class="text-sm font-medium text-on-surface">${u.username || u.name || '—'}</div>
+                                                        <div class="text-xs text-on-surface-variant">${u.userId || '—'}</div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="py-3 px-4 text-sm text-on-surface-variant">${u.email || '—'}</td>
+                                            <td class="py-3 px-4"><span class="role-chip ${u.role}">${u.role}</span></td>
+                                            <td class="py-3 px-4 text-sm text-on-surface-variant">${u.department || '—'}</td>
+                                            <td class="py-3 px-4">
+                                                <span class="status-badge ${u.status === 'Active' ? 'placed' : 'closed'}">${u.status || 'Active'}</span>
+                                            </td>
+                                            <td class="py-3 px-4">
+                                                <div class="flex gap-1">
+                                                    <button class="p-1.5 text-on-surface-variant hover:text-primary transition-colors" onclick="showEditUserForm('${u.userId}')" title="Edit">
+                                                        <span class="material-symbols-outlined text-base">edit</span>
+                                                    </button>
+                                                    <button class="p-1.5 text-on-surface-variant hover:text-error transition-colors" onclick="deleteUser('${u.userId}')" title="Delete">
+                                                        <span class="material-symbols-outlined text-base">delete</span>
+                                                    </button>
+                                                    <button class="p-1.5 text-on-surface-variant hover:text-secondary transition-colors" onclick="showRoleResponsibilities('${u.role}')" title="View Permissions">
+                                                        <span class="material-symbols-outlined text-base">visibility</span>
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    `).join('') : `
+                                        <tr><td colspan="6" class="py-6 text-center text-on-surface-variant">No users found. Click "Add User" to create one.</td></tr>
+                                    `}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="bg-surface-container-lowest rounded-xl p-5 shadow-level-1 border border-outline-variant/30">
+                        <h3 class="text-lg font-semibold text-on-surface mb-3">Role Responsibilities</h3>
+                        <p class="text-sm text-on-surface-variant mb-3">Click the <span class="material-symbols-outlined text-base inline align-middle">visibility</span> icon next to any user to view their role's permissions and responsibilities.</p>
+                        <div class="flex flex-wrap gap-2">
+                            ${Object.keys(ROLE_RESPONSIBILITIES).map(r => `
+                                <button class="px-3 py-1.5 border border-outline-variant rounded-full text-sm hover:bg-surface-container-low transition-colors flex items-center gap-1.5" onclick="showRoleResponsibilities('${r}')">
+                                    <span class="role-chip ${r} text-xs">${r}</span>
+                                    <span class="material-symbols-outlined text-sm">info</span>
+                                </button>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // ================================================================
+        // ADD / EDIT USER FORMS
+        // ================================================================
+        function showAddUserForm() {
+            const roles = ['admin', 'principal', 'officer', 'hod', 'clerk', 'student'];
+            const departments = ['CSE', 'ISE', 'ECE', 'EEE', 'MECH', 'CIVIL', 'AI&ML', 'DS', 'IT', 'ECM', 'Science', 'MBA',
+                'Others'
+            ];
+
+            openModal(`
+                <div class="space-y-4">
+                    <div class="flex justify-between items-center">
+                        <h3 class="text-xl font-bold text-primary">Add New User</h3>
+                        <button onclick="closeModal()" class="p-1 text-on-surface-variant hover:text-primary rounded-full">
+                            <span class="material-symbols-outlined">close</span>
+                        </button>
+                    </div>
+                    <form id="addUserForm" class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium text-on-surface mb-1">User ID *</label>
+                            <input class="w-full px-3 py-2 border border-outline-variant rounded-lg bg-surface-container-lowest text-on-surface text-sm" id="auUserId" placeholder="e.g. USER001" required />
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-on-surface mb-1">Username *</label>
+                            <input class="w-full px-3 py-2 border border-outline-variant rounded-lg bg-surface-container-lowest text-on-surface text-sm" id="auUsername" placeholder="Full name" required />
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-on-surface mb-1">Email *</label>
+                            <input class="w-full px-3 py-2 border border-outline-variant rounded-lg bg-surface-container-lowest text-on-surface text-sm" id="auEmail" placeholder="email@bec.edu.in" type="email" required />
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-on-surface mb-1">Password *</label>
+                            <input class="w-full px-3 py-2 border border-outline-variant rounded-lg bg-surface-container-lowest text-on-surface text-sm" id="auPassword" placeholder="Min 6 characters" type="password" required minlength="6" />
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-on-surface mb-1">Role *</label>
+                            <select class="w-full px-3 py-2 border border-outline-variant rounded-lg bg-surface-container-lowest text-on-surface text-sm" id="auRole" required>
+                                ${roles.map(r => `<option value="${r}">${r.charAt(0).toUpperCase() + r.slice(1)}</option>`).join('')}
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-on-surface mb-1">Department (for HOD / Student)</label>
+                            <select class="w-full px-3 py-2 border border-outline-variant rounded-lg bg-surface-container-lowest text-on-surface text-sm" id="auDepartment">
+                                <option value="">— Select —</option>
+                                ${departments.map(d => `<option value="${d}">${d}</option>`).join('')}
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-on-surface mb-1">Status</label>
+                            <select class="w-full px-3 py-2 border border-outline-variant rounded-lg bg-surface-container-lowest text-on-surface text-sm" id="auStatus">
+                                <option value="Active">Active</option>
+                                <option value="Inactive">Inactive</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="w-full bg-primary text-on-primary font-medium py-2.5 rounded-lg hover:bg-primary-container transition-colors flex items-center justify-center gap-2">
+                            <span class="material-symbols-outlined text-lg">save</span> Create User
+                        </button>
+                    </form>
+                </div>
+            `);
+
+            document.getElementById('addUserForm').addEventListener('submit', async function(e) {
+                e.preventDefault();
+                const payload = {
+                    userId: document.getElementById('auUserId').value.trim(),
+                    username: document.getElementById('auUsername').value.trim(),
+                    email: document.getElementById('auEmail').value.trim(),
+                    password: document.getElementById('auPassword').value.trim(),
+                    role: document.getElementById('auRole').value,
+                    department: document.getElementById('auDepartment').value,
+                    status: document.getElementById('auStatus').value
+                };
+                if (!payload.userId || !payload.username || !payload.email || !payload.password) {
+                    showToast('All required fields must be filled', 'error');
+                    return;
+                }
+                const result = await callAPI('addUser', payload);
+                if (result.success) {
+                    showToast('User created successfully!', 'success');
+                    closeModal();
+                    await loadAllData();
+                    navigateTo('users');
+                } else {
+                    showToast(result.message || 'Failed to create user', 'error');
+                }
+            });
+        }
+
+        function showEditUserForm(userId) {
+            const user = (AppState.users || []).find(u => u.userId === userId);
+            if (!user) { showToast('User not found', 'error'); return; }
+
+            const roles = ['admin', 'principal', 'officer', 'hod', 'clerk', 'student'];
+            const departments = ['CSE', 'ISE', 'ECE', 'EEE', 'MECH', 'CIVIL', 'AI&ML', 'DS', 'IT', 'ECM', 'Science', 'MBA',
+                'Others'
+            ];
+
+            openModal(`
+                <div class="space-y-4">
+                    <div class="flex justify-between items-center">
+                        <h3 class="text-xl font-bold text-primary">Edit User: ${user.username}</h3>
+                        <button onclick="closeModal()" class="p-1 text-on-surface-variant hover:text-primary rounded-full">
+                            <span class="material-symbols-outlined">close</span>
+                        </button>
+                    </div>
+                    <form id="editUserForm" class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium text-on-surface mb-1">User ID</label>
+                            <input class="w-full px-3 py-2 border border-outline-variant rounded-lg bg-surface-container-lowest text-on-surface text-sm" id="euUserId" value="${user.userId || ''}" disabled />
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-on-surface mb-1">Username *</label>
+                            <input class="w-full px-3 py-2 border border-outline-variant rounded-lg bg-surface-container-lowest text-on-surface text-sm" id="euUsername" value="${user.username || ''}" required />
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-on-surface mb-1">Email *</label>
+                            <input class="w-full px-3 py-2 border border-outline-variant rounded-lg bg-surface-container-lowest text-on-surface text-sm" id="euEmail" value="${user.email || ''}" type="email" required />
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-on-surface mb-1">Password (leave blank to keep current)</label>
+                            <input class="w-full px-3 py-2 border border-outline-variant rounded-lg bg-surface-container-lowest text-on-surface text-sm" id="euPassword" placeholder="New password (optional)" type="password" minlength="6" />
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-on-surface mb-1">Role *</label>
+                            <select class="w-full px-3 py-2 border border-outline-variant rounded-lg bg-surface-container-lowest text-on-surface text-sm" id="euRole" required>
+                                ${roles.map(r => `<option value="${r}" ${user.role === r ? 'selected' : ''}>${r.charAt(0).toUpperCase() + r.slice(1)}</option>`).join('')}
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-on-surface mb-1">Department</label>
+                            <select class="w-full px-3 py-2 border border-outline-variant rounded-lg bg-surface-container-lowest text-on-surface text-sm" id="euDepartment">
+                                <option value="">— Select —</option>
+                                ${departments.map(d => `<option value="${d}" ${user.department === d ? 'selected' : ''}>${d}</option>`).join('')}
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-on-surface mb-1">Status</label>
+                            <select class="w-full px-3 py-2 border border-outline-variant rounded-lg bg-surface-container-lowest text-on-surface text-sm" id="euStatus">
+                                <option value="Active" ${user.status === 'Active' ? 'selected' : ''}>Active</option>
+                                <option value="Inactive" ${user.status === 'Inactive' ? 'selected' : ''}>Inactive</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="w-full bg-primary text-on-primary font-medium py-2.5 rounded-lg hover:bg-primary-container transition-colors flex items-center justify-center gap-2">
+                            <span class="material-symbols-outlined text-lg">save</span> Update User
+                        </button>
+                    </form>
+                </div>
+            `);
+
+            document.getElementById('editUserForm').addEventListener('submit', async function(e) {
+                e.preventDefault();
+                const payload = {
+                    userId: user.userId,
+                    username: document.getElementById('euUsername').value.trim(),
+                    email: document.getElementById('euEmail').value.trim(),
+                    password: document.getElementById('euPassword').value.trim(),
+                    role: document.getElementById('euRole').value,
+                    department: document.getElementById('euDepartment').value,
+                    status: document.getElementById('euStatus').value
+                };
+                if (!payload.username || !payload.email) {
+                    showToast('Username and email are required', 'error');
+                    return;
+                }
+                const result = await callAPI('updateUser', payload);
+                if (result.success) {
+                    showToast('User updated successfully!', 'success');
+                    closeModal();
+                    await loadAllData();
+                    navigateTo('users');
+                } else {
+                    showToast(result.message || 'Failed to update user', 'error');
+                }
+            });
+        }
+
+        async function deleteUser(userId) {
+            if (!confirm('Are you sure you want to delete this user?')) return;
+            const result = await callAPI('deleteUser', { userId });
+            if (result.success) {
+                showToast('User deleted successfully', 'success');
+                await loadAllData();
+                navigateTo('users');
+            } else {
+                showToast(result.message || 'Failed to delete user', 'error');
+            }
+        }
+
+        // ================================================================
+        // ROLE RESPONSIBILITIES
+        // ================================================================
+        function showRoleResponsibilities(role) {
+            const info = ROLE_RESPONSIBILITIES[role];
+            if (!info) { showToast('Role not found', 'error'); return; }
+
+            openModal(`
+                <div class="space-y-4">
+                    <div class="flex justify-between items-center">
+                        <div class="flex items-center gap-3">
+                            <span class="material-symbols-outlined text-3xl text-primary">${info.icon}</span>
+                            <div>
+                                <h3 class="text-xl font-bold text-primary">${info.label}</h3>
+                                <span class="role-chip ${role}">${role}</span>
+                            </div>
+                        </div>
+                        <button onclick="closeModal()" class="p-1 text-on-surface-variant hover:text-primary rounded-full">
+                            <span class="material-symbols-outlined">close</span>
+                        </button>
+                    </div>
+                    <div class="border-t border-outline-variant/30 pt-4">
+                        <h4 class="text-sm font-semibold text-on-surface mb-2">Permissions & Responsibilities</h4>
+                        <ul class="perm-list">
+                            ${info.permissions.map(p => `<li><span class="material-symbols-outlined">check_circle</span> ${p}</li>`).join('')}
+                        </ul>
+                    </div>
+                    <div class="border-t border-outline-variant/30 pt-4">
+                        <h4 class="text-sm font-semibold text-on-surface mb-2">Dashboard Features</h4>
+                        <div class="flex flex-wrap gap-2">
+                            ${info.features.map(f => `<span class="px-3 py-1 bg-surface-container-low rounded-full text-sm text-on-surface-variant border border-outline-variant">${f}</span>`).join('')}
+                        </div>
+                    </div>
+                    <div class="border-t border-outline-variant/30 pt-4 text-xs text-on-surface-variant">
+                        <p>Users with this role can access only the features listed above.</p>
+                    </div>
+                </div>
+            `);
+        }
+
+        // ================================================================
+        // HOD MANAGEMENT (Principal)
+        // ================================================================
+        async function renderHODManagement(container, data) {
+            const hodUsers = (AppState.users || []).filter(u => u.role === 'hod');
+            const departments = ['CSE', 'ISE', 'ECE', 'EEE', 'MECH', 'CIVIL', 'AI&ML', 'DS', 'IT', 'ECM', 'Science', 'MBA',
+                'Others'
+            ];
+
+            container.innerHTML = `
+                <div class="space-y-5">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                        <div>
+                            <h2 class="text-2xl font-bold text-primary">HOD Management</h2>
+                            <p class="text-sm text-on-surface-variant">Add or edit HODs for each department. Manage their login credentials.</p>
+                        </div>
+                        <button class="px-4 py-2 bg-primary text-on-primary rounded-lg text-sm font-medium hover:bg-primary-container transition-colors flex items-center gap-2" onclick="showAddHODForm()">
+                            <span class="material-symbols-outlined text-lg">add</span> Add HOD
+                        </button>
+                    </div>
+
+                    <div class="bg-surface-container-lowest rounded-xl shadow-level-1 border border-outline-variant/30 overflow-hidden">
+                        <div class="table-wrap">
+                            <table>
+                                <thead class="bg-surface-container-low">
+                                    <tr>
+                                        <th class="py-3 px-4 text-left text-xs font-semibold text-on-surface-variant uppercase tracking-wider">HOD</th>
+                                        <th class="py-3 px-4 text-left text-xs font-semibold text-on-surface-variant uppercase tracking-wider">Email</th>
+                                        <th class="py-3 px-4 text-left text-xs font-semibold text-on-surface-variant uppercase tracking-wider">Department</th>
+                                        <th class="py-3 px-4 text-left text-xs font-semibold text-on-surface-variant uppercase tracking-wider">Status</th>
+                                        <th class="py-3 px-4 text-left text-xs font-semibold text-on-surface-variant uppercase tracking-wider">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    ${hodUsers.length ? hodUsers.map(u => `
+                                        <tr class="hover:bg-surface-container-low transition-colors border-b border-outline-variant/30">
+                                            <td class="py-3 px-4">
+                                                <div class="flex items-center gap-3">
+                                                    <div class="w-8 h-8 rounded-full bg-primary-fixed flex items-center justify-center text-primary font-semibold text-sm">${(u.username || 'H').charAt(0).toUpperCase()}</div>
+                                                    <div>
+                                                        <div class="text-sm font-medium text-on-surface">${u.username || '—'}</div>
+                                                        <div class="text-xs text-on-surface-variant">${u.userId || '—'}</div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="py-3 px-4 text-sm text-on-surface-variant">${u.email || '—'}</td>
+                                            <td class="py-3 px-4 text-sm font-medium text-on-surface">${u.department || '—'}</td>
+                                            <td class="py-3 px-4">
+                                                <span class="status-badge ${u.status === 'Active' ? 'placed' : 'closed'}">${u.status || 'Active'}</span>
+                                            </td>
+                                            <td class="py-3 px-4">
+                                                <div class="flex gap-1">
+                                                    <button class="p-1.5 text-on-surface-variant hover:text-primary transition-colors" onclick="showEditHODForm('${u.userId}')" title="Edit">
+                                                        <span class="material-symbols-outlined text-base">edit</span>
+                                                    </button>
+                                                    <button class="p-1.5 text-on-surface-variant hover:text-error transition-colors" onclick="deleteUser('${u.userId}')" title="Delete">
+                                                        <span class="material-symbols-outlined text-base">delete</span>
+                                                    </button>
+                                                    <button class="p-1.5 text-on-surface-variant hover:text-secondary transition-colors" onclick="showRoleResponsibilities('hod')" title="View Permissions">
+                                                        <span class="material-symbols-outlined text-base">visibility</span>
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    `).join('') : `
+                                        <tr><td colspan="5" class="py-6 text-center text-on-surface-variant">No HODs found. Click "Add HOD" to create one.</td></tr>
+                                    `}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="bg-surface-container-lowest rounded-xl p-5 shadow-level-1 border border-outline-variant/30">
+                        <h3 class="text-lg font-semibold text-on-surface mb-2">About HOD Management</h3>
+                        <p class="text-sm text-on-surface-variant">HODs can view department-wise student data and generate reports. Each HOD is assigned to a specific department/branch. They have read-only access to student data in their department.</p>
+                    </div>
+                </div>
+            `;
+        }
+
+        function showAddHODForm() {
+            const departments = ['CSE', 'ISE', 'ECE', 'EEE', 'MECH', 'CIVIL', 'AI&ML', 'DS', 'IT', 'ECM', 'Science', 'MBA',
+                'Others'
+            ];
+
+            openModal(`
+                <div class="space-y-4">
+                    <div class="flex justify-between items-center">
+                        <h3 class="text-xl font-bold text-primary">Add New HOD</h3>
+                        <button onclick="closeModal()" class="p-1 text-on-surface-variant hover:text-primary rounded-full">
+                            <span class="material-symbols-outlined">close</span>
+                        </button>
+                    </div>
+                    <p class="text-sm text-on-surface-variant">Create a new HOD account with department assignment.</p>
+                    <form id="addHODForm" class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium text-on-surface mb-1">User ID *</label>
+                            <input class="w-full px-3 py-2 border border-outline-variant rounded-lg bg-surface-container-lowest text-on-surface text-sm" id="ahUserId" placeholder="e.g. HOD001" required />
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-on-surface mb-1">Full Name *</label>
+                            <input class="w-full px-3 py-2 border border-outline-variant rounded-lg bg-surface-container-lowest text-on-surface text-sm" id="ahUsername" placeholder="e.g. Dr. Ramesh Patil" required />
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-on-surface mb-1">Email *</label>
+                            <input class="w-full px-3 py-2 border border-outline-variant rounded-lg bg-surface-container-lowest text-on-surface text-sm" id="ahEmail" placeholder="hod.cse@bec.edu.in" type="email" required />
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-on-surface mb-1">Password *</label>
+                            <input class="w-full px-3 py-2 border border-outline-variant rounded-lg bg-surface-container-lowest text-on-surface text-sm" id="ahPassword" placeholder="Min 6 characters" type="password" required minlength="6" />
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-on-surface mb-1">Department *</label>
+                            <select class="w-full px-3 py-2 border border-outline-variant rounded-lg bg-surface-container-lowest text-on-surface text-sm" id="ahDepartment" required>
+                                <option value="">— Select Department —</option>
+                                ${departments.map(d => `<option value="${d}">${d}</option>`).join('')}
+                            </select>
+                        </div>
+                        <button type="submit" class="w-full bg-primary text-on-primary font-medium py-2.5 rounded-lg hover:bg-primary-container transition-colors flex items-center justify-center gap-2">
+                            <span class="material-symbols-outlined text-lg">save</span> Create HOD
+                        </button>
+                    </form>
+                </div>
+            `);
+
+            document.getElementById('addHODForm').addEventListener('submit', async function(e) {
+                e.preventDefault();
+                const payload = {
+                    userId: document.getElementById('ahUserId').value.trim(),
+                    username: document.getElementById('ahUsername').value.trim(),
+                    email: document.getElementById('ahEmail').value.trim(),
+                    password: document.getElementById('ahPassword').value.trim(),
+                    role: 'hod',
+                    department: document.getElementById('ahDepartment').value,
+                    status: 'Active'
+                };
+                if (!payload.userId || !payload.username || !payload.email || !payload.password || !payload.department) {
+                    showToast('All fields are required', 'error');
+                    return;
+                }
+                const result = await callAPI('addUser', payload);
+                if (result.success) {
+                    showToast('HOD created successfully!', 'success');
+                    closeModal();
+                    await loadAllData();
+                    navigateTo('hod-management');
+                } else {
+                    showToast(result.message || 'Failed to create HOD', 'error');
+                }
+            });
+        }
+
+        function showEditHODForm(userId) {
+            const user = (AppState.users || []).find(u => u.userId === userId);
+            if (!user) { showToast('HOD not found', 'error'); return; }
+
+            const departments = ['CSE', 'ISE', 'ECE', 'EEE', 'MECH', 'CIVIL', 'AI&ML', 'DS', 'IT', 'ECM', 'Science', 'MBA',
+                'Others'
+            ];
+
+            openModal(`
+                <div class="space-y-4">
+                    <div class="flex justify-between items-center">
+                        <h3 class="text-xl font-bold text-primary">Edit HOD: ${user.username}</h3>
+                        <button onclick="closeModal()" class="p-1 text-on-surface-variant hover:text-primary rounded-full">
+                            <span class="material-symbols-outlined">close</span>
+                        </button>
+                    </div>
+                    <form id="editHODForm" class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium text-on-surface mb-1">User ID</label>
+                            <input class="w-full px-3 py-2 border border-outline-variant rounded-lg bg-surface-container-lowest text-on-surface text-sm" value="${user.userId || ''}" disabled />
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-on-surface mb-1">Full Name *</label>
+                            <input class="w-full px-3 py-2 border border-outline-variant rounded-lg bg-surface-container-lowest text-on-surface text-sm" id="ehUsername" value="${user.username || ''}" required />
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-on-surface mb-1">Email *</label>
+                            <input class="w-full px-3 py-2 border border-outline-variant rounded-lg bg-surface-container-lowest text-on-surface text-sm" id="ehEmail" value="${user.email || ''}" type="email" required />
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-on-surface mb-1">Password (leave blank to keep current)</label>
+                            <input class="w-full px-3 py-2 border border-outline-variant rounded-lg bg-surface-container-lowest text-on-surface text-sm" id="ehPassword" placeholder="New password (optional)" type="password" minlength="6" />
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-on-surface mb-1">Department *</label>
+                            <select class="w-full px-3 py-2 border border-outline-variant rounded-lg bg-surface-container-lowest text-on-surface text-sm" id="ehDepartment" required>
+                                <option value="">— Select Department —</option>
+                                ${departments.map(d => `<option value="${d}" ${user.department === d ? 'selected' : ''}>${d}</option>`).join('')}
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-on-surface mb-1">Status</label>
+                            <select class="w-full px-3 py-2 border border-outline-variant rounded-lg bg-surface-container-lowest text-on-surface text-sm" id="ehStatus">
+                                <option value="Active" ${user.status === 'Active' ? 'selected' : ''}>Active</option>
+                                <option value="Inactive" ${user.status === 'Inactive' ? 'selected' : ''}>Inactive</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="w-full bg-primary text-on-primary font-medium py-2.5 rounded-lg hover:bg-primary-container transition-colors flex items-center justify-center gap-2">
+                            <span class="material-symbols-outlined text-lg">save</span> Update HOD
+                        </button>
+                    </form>
+                </div>
+            `);
+
+            document.getElementById('editHODForm').addEventListener('submit', async function(e) {
+                e.preventDefault();
+                const payload = {
+                    userId: user.userId,
+                    username: document.getElementById('ehUsername').value.trim(),
+                    email: document.getElementById('ehEmail').value.trim(),
+                    password: document.getElementById('ehPassword').value.trim(),
+                    role: 'hod',
+                    department: document.getElementById('ehDepartment').value,
+                    status: document.getElementById('ehStatus').value
+                };
+                if (!payload.username || !payload.email || !payload.department) {
+                    showToast('Name, email and department are required', 'error');
+                    return;
+                }
+                const result = await callAPI('updateUser', payload);
+                if (result.success) {
+                    showToast('HOD updated successfully!', 'success');
+                    closeModal();
+                    await loadAllData();
+                    navigateTo('hod-management');
+                } else {
+                    showToast(result.message || 'Failed to update HOD', 'error');
+                }
+            });
+        }
+
+        // ================================================================
+        // PLACEHOLDER FUNCTIONS (to keep existing code working)
+        // ================================================================
+        function renderAdminDashboard(container, data) {
+            const students = data.students || [];
+            const total = students.length;
+            const placed = students.filter(s => s.placed).length;
+            const eligible = students.filter(s => parseFloat(s.cgpa) >= 7.0 && parseInt(s.backlogs) <= 1).length;
+            const activeDrives = (data.drives || []).filter(d => d.status !== 'Completed' && d.status !== 'Cancelled')
+            .length;
+            const pct = total ? Math.round((placed / total) * 100) : 0;
+            const companies = data.companies || [];
+            const users = AppState.users || [];
+
+            container.innerHTML = `
+                <div class="space-y-6">
+                    <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3">
+                        <div>
+                            <h2 class="text-2xl font-bold text-primary">Admin Dashboard</h2>
+                            <p class="text-sm text-on-surface-variant">Full system control — users, configuration, and data.</p>
+                        </div>
+                        <button class="px-4 py-2 border border-outline-variant rounded-lg text-sm font-medium hover:bg-surface-container-low transition-colors flex items-center gap-2" onclick="showToast('Report export feature coming soon','info')">
+                            <span class="material-symbols-outlined text-lg">download</span> Export Report
+                        </button>
+                    </div>
+
+                    <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+                        <div class="bg-surface-container-lowest rounded-xl p-5 shadow-level-1 border border-outline-variant/30">
+                            <p class="text-xs font-medium text-on-surface-variant uppercase tracking-wider">Users</p>
+                            <h3 class="text-2xl font-bold text-primary mt-1">${users.length}</h3>
+                        </div>
+                        <div class="bg-surface-container-lowest rounded-xl p-5 shadow-level-1 border border-outline-variant/30">
+                            <p class="text-xs font-medium text-on-surface-variant uppercase tracking-wider">Students</p>
+                            <h3 class="text-2xl font-bold text-primary mt-1">${total}</h3>
+                        </div>
+                        <div class="bg-surface-container-lowest rounded-xl p-5 shadow-level-1 border border-outline-variant/30">
+                            <p class="text-xs font-medium text-on-surface-variant uppercase tracking-wider">Eligible</p>
+                            <h3 class="text-2xl font-bold text-primary mt-1">${eligible}</h3>
+                        </div>
+                        <div class="bg-primary-container rounded-xl p-5 shadow-level-1 border border-primary-container/30">
+                            <p class="text-xs font-medium text-primary-fixed-dim uppercase tracking-wider">Placed</p>
+                            <h3 class="text-2xl font-bold text-on-primary">${placed}</h3>
+                            <p class="text-xs text-primary-fixed-dim">${pct}% rate</p>
+                        </div>
+                        <div class="bg-surface-container-lowest rounded-xl p-5 shadow-level-1 border border-outline-variant/30">
+                            <p class="text-xs font-medium text-on-surface-variant uppercase tracking-wider">Companies</p>
+                            <h3 class="text-2xl font-bold text-primary mt-1">${companies.length}</h3>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+                        <div class="bg-surface-container-lowest rounded-xl p-5 shadow-level-1 border border-outline-variant/30">
+                            <h3 class="text-lg font-semibold text-on-surface mb-4">Quick Actions</h3>
+                            <div class="grid grid-cols-2 gap-3">
+                                <button class="flex items-center gap-2 p-3 bg-surface-container-low rounded-lg hover:bg-surface-container transition-colors border border-outline-variant" onclick="navigateTo('users')">
+                                    <span class="material-symbols-outlined text-primary">admin_panel_settings</span>
+                                    <span class="text-sm font-medium">Manage Users</span>
+                                </button>
+                                <button class="flex items-center gap-2 p-3 bg-surface-container-low rounded-lg hover:bg-surface-container transition-colors border border-outline-variant" onclick="showToast('Add student form','info')">
+                                    <span class="material-symbols-outlined text-primary">person_add</span>
+                                    <span class="text-sm font-medium">Add Student</span>
+                                </button>
+                                <button class="flex items-center gap-2 p-3 bg-surface-container-low rounded-lg hover:bg-surface-container transition-colors border border-outline-variant" onclick="navigateTo('companies')">
+                                    <span class="material-symbols-outlined text-primary">business</span>
+                                    <span class="text-sm font-medium">Companies</span>
+                                </button>
+                                <button class="flex items-center gap-2 p-3 bg-surface-container-low rounded-lg hover:bg-surface-container transition-colors border border-outline-variant" onclick="navigateTo('drives')">
+                                    <span class="material-symbols-outlined text-primary">work</span>
+                                    <span class="text-sm font-medium">Drives</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="bg-surface-container-lowest rounded-xl p-5 shadow-level-1 border border-outline-variant/30">
+                            <h3 class="text-lg font-semibold text-on-surface mb-4">Role Distribution</h3>
+                            <div id="roleDistChart" class="h-48 relative"><canvas id="roleDistCanvas"></canvas></div>
+                        </div>
+                    </div>
+
+                    <div class="bg-surface-container-lowest rounded-xl p-5 shadow-level-1 border border-outline-variant/30">
+                        <h3 class="text-lg font-semibold text-on-surface mb-3">Recent Users</h3>
+                        <div class="table-wrap">
+                            <table>
+                                <thead class="bg-surface-container-low">
+                                    <tr>
+                                        <th class="py-2 px-4 text-left text-xs font-semibold text-on-surface-variant uppercase tracking-wider">User</th>
+                                        <th class="py-2 px-4 text-left text-xs font-semibold text-on-surface-variant uppercase tracking-wider">Role</th>
+                                        <th class="py-2 px-4 text-left text-xs font-semibold text-on-surface-variant uppercase tracking-wider">Department</th>
+                                        <th class="py-2 px-4 text-left text-xs font-semibold text-on-surface-variant uppercase tracking-wider">Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    ${users.slice(0, 5).map(u => `
+                                        <tr class="border-b border-outline-variant/30">
+                                            <td class="py-2 px-4 text-sm text-on-surface">${u.username || '—'}</td>
+                                            <td class="py-2 px-4"><span class="role-chip ${u.role}">${u.role}</span></td>
+                                            <td class="py-2 px-4 text-sm text-on-surface-variant">${u.department || '—'}</td>
+                                            <td class="py-2 px-4"><span class="status-badge ${u.status === 'Active' ? 'placed' : 'closed'}">${u.status || 'Active'}</span></td>
+                                        </tr>
+                                    `).join('')}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            setTimeout(() => {
+                const ctx = document.getElementById('roleDistCanvas');
+                if (ctx) {
+                    const roleCounts = {};
+                    users.forEach(u => { roleCounts[u.role] = (roleCounts[u.role] || 0) + 1; });
+                    const labels = Object.keys(roleCounts);
+                    const values = Object.values(roleCounts);
+                    const colors = {
+                        admin: '#002045',
+                        principal: '#1a365d',
+                        officer: '#1960a3',
+                        hod: '#7db6ff',
+                        clerk: '#c4c6cf',
+                        student: '#d6e3ff'
+                    };
+                    if (chartInstances.roleDist) chartInstances.roleDist.destroy();
+                    chartInstances.roleDist = new Chart(ctx, {
+                        type: 'doughnut',
+                        data: {
+                            labels: labels,
+                            datasets: [{
+                                data: values,
+                                backgroundColor: labels.map(l => colors[l] || '#e3e2e6'),
+                                borderWidth: 0
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            plugins: {
+                                legend: { position: 'bottom', labels: { boxWidth: 12, padding: 8 } }
+                            }
+                        }
+                    });
+                }
+            }, 200);
+        }
+
+        function renderPrincipalDashboard(container, data) {
+            const students = data.students || [];
+            const total = students.length;
+            const placed = students.filter(s => s.placed).length;
+            const eligible = students.filter(s => parseFloat(s.cgpa) >= 7.0 && parseInt(s.backlogs) <= 1).length;
+            const pct = total ? Math.round((placed / total) * 100) : 0;
+            const hodUsers = (AppState.users || []).filter(u => u.role === 'hod');
+
+            container.innerHTML = `
+                <div class="space-y-6">
+                    <div>
+                        <h2 class="text-2xl font-bold text-primary">Principal Dashboard</h2>
+                        <p class="text-sm text-on-surface-variant">Institutional overview — manage HODs and view reports.</p>
+                    </div>
+
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="bg-surface-container-lowest rounded-xl p-5 shadow-level-1 border border-outline-variant/30">
+                            <p class="text-xs text-on-surface-variant uppercase tracking-wider">Total Students</p>
+                            <h3 class="text-2xl font-bold text-primary">${total}</h3>
+                        </div>
+                        <div class="bg-surface-container-lowest rounded-xl p-5 shadow-level-1 border border-outline-variant/30">
+                            <p class="text-xs text-on-surface-variant uppercase tracking-wider">Eligible</p>
+                            <h3 class="text-2xl font-bold text-primary">${eligible}</h3>
+                        </div>
+                        <div class="bg-surface-container-lowest rounded-xl p-5 shadow-level-1 border border-outline-variant/30">
+                            <p class="text-xs text-on-surface-variant uppercase tracking-wider">Placed</p>
+                            <h3 class="text-2xl font-bold text-primary">${placed}</h3>
+                            <p class="text-xs text-on-surface-variant">${pct}% rate</p>
+                        </div>
+                        <div class="bg-primary-container rounded-xl p-5 shadow-level-1 border border-primary-container/30">
+                            <p class="text-xs text-primary-fixed-dim uppercase tracking-wider">HODs</p>
+                            <h3 class="text-2xl font-bold text-on-primary">${hodUsers.length}</h3>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                        <div class="bg-surface-container-lowest rounded-xl p-5 shadow-level-1 border border-outline-variant/30">
+                            <div class="flex justify-between items-center mb-4">
+                                <h3 class="text-lg font-semibold text-on-surface">HOD Management</h3>
+                                <button class="text-sm text-secondary hover:underline flex items-center gap-1" onclick="navigateTo('hod-management')">
+                                    Manage <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                                </button>
+                            </div>
+                            ${hodUsers.length ? `
+                                <div class="space-y-2">
+                                    ${hodUsers.slice(0, 4).map(u => `
+                                        <div class="flex items-center justify-between p-2 rounded-lg hover:bg-surface-container-low transition-colors border border-outline-variant/30">
+                                            <div class="flex items-center gap-3">
+                                                <div class="w-8 h-8 rounded-full bg-primary-fixed flex items-center justify-center text-primary font-semibold text-sm">${(u.username || 'H').charAt(0).toUpperCase()}</div>
+                                                <div>
+                                                    <div class="text-sm font-medium text-on-surface">${u.username}</div>
+                                                    <div class="text-xs text-on-surface-variant">${u.department || '—'}</div>
+                                                </div>
+                                            </div>
+                                            <span class="role-chip hod">HOD</span>
+                                        </div>
+                                    `).join('')}
+                                </div>
+                            ` : `
+                                <p class="text-sm text-on-surface-variant">No HODs assigned yet. <button class="text-secondary hover:underline" onclick="navigateTo('hod-management')">Add HOD</button></p>
+                            `}
+                        </div>
+                        <div class="bg-surface-container-lowest rounded-xl p-5 shadow-level-1 border border-outline-variant/30">
+                            <h3 class="text-lg font-semibold text-on-surface mb-4">Quick Actions</h3>
+                            <div class="grid grid-cols-2 gap-3">
+                                <button class="flex items-center gap-2 p-3 bg-surface-container-low rounded-lg hover:bg-surface-container transition-colors border border-outline-variant" onclick="navigateTo('hod-management')">
+                                    <span class="material-symbols-outlined text-primary">how_to_reg</span>
+                                    <span class="text-sm font-medium">Manage HODs</span>
+                                </button>
+                                <button class="flex items-center gap-2 p-3 bg-surface-container-low rounded-lg hover:bg-surface-container transition-colors border border-outline-variant" onclick="navigateTo('principal-reports')">
+                                    <span class="material-symbols-outlined text-primary">monitoring</span>
+                                    <span class="text-sm font-medium">NBA/NAAC Reports</span>
+                                </button>
+                                <button class="flex items-center gap-2 p-3 bg-surface-container-low rounded-lg hover:bg-surface-container transition-colors border border-outline-variant" onclick="window.print()">
+                                    <span class="material-symbols-outlined text-primary">print</span>
+                                    <span class="text-sm font-medium">Print Report</span>
+                                </button>
+                                <button class="flex items-center gap-2 p-3 bg-surface-container-low rounded-lg hover:bg-surface-container transition-colors border border-outline-variant" onclick="showToast('Stats export coming soon','info')">
+                                    <span class="material-symbols-outlined text-primary">download</span>
+                                    <span class="text-sm font-medium">Export Stats</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // ================================================================
+        // STUDENT / HOD / OFFICER / CLERK DASHBOARDS (Stubs)
+        // ================================================================
+        function renderStudentDashboard(container, data) {
+            const user = AppState.currentUser;
+            const student = (data.students || []).find(s => s.usn === user.id || s.email === user.email);
+            const name = student ? student.name : user.name;
+            const branch = student ? student.branch : (user.department || '—');
+            const cgpa = student ? student.cgpa : '—';
+            const backlogs = student ? student.backlogs : '—';
+            const apps = (data.applications || []).filter(a => a.usn === (student ? student.usn : user.id));
+            const placed = (data.placements || []).some(p => p.usn === (student ? student.usn : user.id));
+
+            container.innerHTML = `
+                <div class="space-y-6">
+                    <div>
+                        <h2 class="text-2xl font-bold text-primary">Hello, ${name} 👋</h2>
+                        <p class="text-sm text-on-surface-variant">${branch} · ${user.email}</p>
+                    </div>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="bg-surface-container-lowest rounded-xl p-5 shadow-level-1 border border-outline-variant/30 text-center">
+                            <div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center text-primary mx-auto mb-2"><span class="material-symbols-outlined">explore</span></div>
+                            <h3 class="text-2xl font-bold text-primary">${(data.drives || []).filter(d => d.status === 'Registration Open').length}</h3>
+                            <p class="text-xs text-on-surface-variant">Open Drives</p>
+                        </div>
+                        <div class="bg-surface-container-lowest rounded-xl p-5 shadow-level-1 border border-outline-variant/30 text-center">
+                            <div class="w-10 h-10 rounded-full bg-secondary-fixed flex items-center justify-center text-on-secondary-container mx-auto mb-2"><span class="material-symbols-outlined">task</span></div>
+                            <h3 class="text-2xl font-bold text-primary">${apps.length}</h3>
+                            <p class="text-xs text-on-surface-variant">Applied</p>
+                        </div>
+                        <div class="bg-surface-container-lowest rounded-xl p-5 shadow-level-1 border border-outline-variant/30 text-center">
+                            <div class="w-10 h-10 rounded-full bg-tertiary-fixed flex items-center justify-center text-tertiary mx-auto mb-2"><span class="material-symbols-outlined">star</span></div>
+                            <h3 class="text-2xl font-bold text-primary">${apps.filter(a => a.status === 'Shortlisted' || a.status === 'Selected').length}</h3>
+                            <p class="text-xs text-on-surface-variant">Shortlisted</p>
+                        </div>
+                        <div class="bg-primary-container rounded-xl p-5 shadow-level-1 border border-primary-container/30 text-center">
+                            <div class="w-10 h-10 rounded-full bg-on-primary/10 flex items-center justify-center text-on-primary mx-auto mb-2"><span class="material-symbols-outlined">check_circle</span></div>
+                            <h3 class="text-2xl font-bold text-on-primary">${placed ? 1 : 0}</h3>
+                            <p class="text-xs text-primary-fixed-dim">Placed</p>
+                        </div>
+                    </div>
+                    <div class="bg-surface-container-lowest rounded-xl p-5 shadow-level-1 border border-outline-variant/30">
+                        <h3 class="text-lg font-semibold text-on-surface mb-3">Quick Actions</h3>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                            <button class="flex flex-col items-center p-4 bg-surface-container-low rounded-lg hover:bg-surface-container transition-colors border border-outline-variant" onclick="navigateTo('profile')">
+                                <span class="material-symbols-outlined text-primary text-2xl">person</span>
+                                <span class="text-sm font-medium mt-1">Profile</span>
+                            </button>
+                            <button class="flex flex-col items-center p-4 bg-surface-container-low rounded-lg hover:bg-surface-container transition-colors border border-outline-variant" onclick="navigateTo('student-drives')">
+                                <span class="material-symbols-outlined text-primary text-2xl">explore</span>
+                                <span class="text-sm font-medium mt-1">Browse Drives</span>
+                            </button>
+                            <button class="flex flex-col items-center p-4 bg-surface-container-low rounded-lg hover:bg-surface-container transition-colors border border-outline-variant" onclick="navigateTo('student-form')">
+                                <span class="material-symbols-outlined text-primary text-2xl">description</span>
+                                <span class="text-sm font-medium mt-1">Placement Form</span>
+                            </button>
+                            <button class="flex flex-col items-center p-4 bg-surface-container-low rounded-lg hover:bg-surface-container transition-colors border border-outline-variant" onclick="showToast('Resume upload','info')">
+                                <span class="material-symbols-outlined text-primary text-2xl">upload_file</span>
+                                <span class="text-sm font-medium mt-1">Upload Resume</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderHODDashboard(container, data) {
+            const user = AppState.currentUser;
+            const dept = user.department || 'CSE';
+            const deptStudents = (data.students || []).filter(s => s.branch === dept);
+            const total = deptStudents.length;
+            const placed = deptStudents.filter(s => s.placed).length;
+
+            container.innerHTML = `
+                <div class="space-y-6">
+                    <div>
+                        <h2 class="text-2xl font-bold text-primary">Department Dashboard — ${dept}</h2>
+                        <p class="text-sm text-on-surface-variant">Overview of your department's placement statistics.</p>
+                    </div>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="bg-surface-container-lowest rounded-xl p-5 shadow-level-1 border border-outline-variant/30">
+                            <p class="text-xs text-on-surface-variant uppercase tracking-wider">Total Students</p>
+                            <h3 class="text-2xl font-bold text-primary">${total}</h3>
+                        </div>
+                        <div class="bg-surface-container-lowest rounded-xl p-5 shadow-level-1 border border-outline-variant/30">
+                            <p class="text-xs text-on-surface-variant uppercase tracking-wider">Eligible</p>
+                            <h3 class="text-2xl font-bold text-primary">${deptStudents.filter(s => parseFloat(s.cgpa) >= 7.0 && parseInt(s.backlogs) <= 1).length}</h3>
+                        </div>
+                        <div class="bg-surface-container-lowest rounded-xl p-5 shadow-level-1 border border-outline-variant/30">
+                            <p class="text-xs text-on-surface-variant uppercase tracking-wider">Placed</p>
+                            <h3 class="text-2xl font-bold text-primary">${placed}</h3>
+                        </div>
+                        <div class="bg-primary-container rounded-xl p-5 shadow-level-1 border border-primary-container/30">
+                            <p class="text-xs text-primary-fixed-dim uppercase tracking-wider">Placement %</p>
+                            <h3 class="text-2xl font-bold text-on-primary">${total ? Math.round((placed/total)*100) : 0}%</h3>
+                        </div>
+                    </div>
+                    <div class="flex gap-3 flex-wrap">
+                        <button class="px-4 py-2 bg-primary text-on-primary rounded-lg text-sm font-medium hover:bg-primary-container transition-colors flex items-center gap-2" onclick="navigateTo('students')">
+                            <span class="material-symbols-outlined text-lg">group</span> View Dept. Students
+                        </button>
+                        <button class="px-4 py-2 border border-outline-variant rounded-lg text-sm font-medium hover:bg-surface-container-low transition-colors flex items-center gap-2" onclick="navigateTo('reports')">
+                            <span class="material-symbols-outlined text-lg">assessment</span> Dept. Reports
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderOfficerDashboard(container, data) {
+            const students = data.students || [];
+            const total = students.length;
+            const eligible = students.filter(s => parseFloat(s.cgpa) >= 7.0 && parseInt(s.backlogs) <= 1).length;
+            const placed = students.filter(s => s.placed).length;
+            const activeDrives = (data.drives || []).filter(d => d.status !== 'Completed' && d.status !== 'Cancelled')
+            .length;
+            const totalApps = (data.applications || []).length;
+
+            container.innerHTML = `
+                <div class="space-y-6">
+                    <div>
+                        <h2 class="text-2xl font-bold text-primary">Placement Officer Dashboard</h2>
+                        <p class="text-sm text-on-surface-variant">Manage drives, applications, and placements.</p>
+                    </div>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="bg-surface-container-lowest rounded-xl p-5 shadow-level-1 border border-outline-variant/30">
+                            <p class="text-xs text-on-surface-variant uppercase tracking-wider">Students</p>
+                            <h3 class="text-2xl font-bold text-primary">${total}</h3>
+                        </div>
+                        <div class="bg-surface-container-lowest rounded-xl p-5 shadow-level-1 border border-outline-variant/30">
+                            <p class="text-xs text-on-surface-variant uppercase tracking-wider">Eligible</p>
+                            <h3 class="text-2xl font-bold text-primary">${eligible}</h3>
+                        </div>
+                        <div class="bg-surface-container-lowest rounded-xl p-5 shadow-level-1 border border-outline-variant/30">
+                            <p class="text-xs text-on-surface-variant uppercase tracking-wider">Applications</p>
+                            <h3 class="text-2xl font-bold text-primary">${totalApps}</h3>
+                        </div>
+                        <div class="bg-primary-container rounded-xl p-5 shadow-level-1 border border-primary-container/30">
+                            <p class="text-xs text-primary-fixed-dim uppercase tracking-wider">Active Drives</p>
+                            <h3 class="text-2xl font-bold text-on-primary">${activeDrives}</h3>
+                        </div>
+                    </div>
+                    <div class="flex gap-3 flex-wrap">
+                        <button class="px-4 py-2 bg-primary text-on-primary rounded-lg text-sm font-medium hover:bg-primary-container transition-colors flex items-center gap-2" onclick="showToast('New drive wizard','info')">
+                            <span class="material-symbols-outlined text-lg">add</span> New Drive
+                        </button>
+                        <button class="px-4 py-2 border border-outline-variant rounded-lg text-sm font-medium hover:bg-surface-container-low transition-colors flex items-center gap-2" onclick="navigateTo('drives')">
+                            <span class="material-symbols-outlined text-lg">work</span> Manage Drives
+                        </button>
+                        <button class="px-4 py-2 border border-outline-variant rounded-lg text-sm font-medium hover:bg-surface-container-low transition-colors flex items-center gap-2" onclick="navigateTo('shortlisting')">
+                            <span class="material-symbols-outlined text-lg">how_to_reg</span> Shortlisting
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderClerkDashboard(container, data) {
+            const students = data.students || [];
+            const total = students.length;
+            const placed = students.filter(s => s.placed).length;
+            const results = data.placementResults || [];
+
+            container.innerHTML = `
+                <div class="space-y-6">
+                    <div>
+                        <h2 class="text-2xl font-bold text-primary">Office Clerk Dashboard</h2>
+                        <p class="text-sm text-on-surface-variant">Data entry, verification, and record maintenance.</p>
+                    </div>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="bg-surface-container-lowest rounded-xl p-5 shadow-level-1 border border-outline-variant/30">
+                            <p class="text-xs text-on-surface-variant uppercase tracking-wider">Students</p>
+                            <h3 class="text-2xl font-bold text-primary">${total}</h3>
+                        </div>
+                        <div class="bg-surface-container-lowest rounded-xl p-5 shadow-level-1 border border-outline-variant/30">
+                            <p class="text-xs text-on-surface-variant uppercase tracking-wider">Placed</p>
+                            <h3 class="text-2xl font-bold text-primary">${placed}</h3>
+                        </div>
+                        <div class="bg-surface-container-lowest rounded-xl p-5 shadow-level-1 border border-outline-variant/30">
+                            <p class="text-xs text-on-surface-variant uppercase tracking-wider">Pending Entry</p>
+                            <h3 class="text-2xl font-bold text-primary">${total - placed}</h3>
+                        </div>
+                        <div class="bg-primary-container rounded-xl p-5 shadow-level-1 border border-primary-container/30">
+                            <p class="text-xs text-primary-fixed-dim uppercase tracking-wider">Results Entered</p>
+                            <h3 class="text-2xl font-bold text-on-primary">${results.length}</h3>
+                        </div>
+                    </div>
+                    <div class="flex gap-3 flex-wrap">
+                        <button class="px-4 py-2 bg-primary text-on-primary rounded-lg text-sm font-medium hover:bg-primary-container transition-colors flex items-center gap-2" onclick="navigateTo('clerk-entry')">
+                            <span class="material-symbols-outlined text-lg">edit_note</span> Enter Data
+                        </button>
+                        <button class="px-4 py-2 border border-outline-variant rounded-lg text-sm font-medium hover:bg-surface-container-low transition-colors flex items-center gap-2" onclick="navigateTo('placements')">
+                            <span class="material-symbols-outlined text-lg">school</span> View Placements
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+
+        // ================================================================
+        // STUB FUNCTIONS for navigation
+        // ================================================================
+        function renderStudents(container, data, role) { container.innerHTML =
+                `<div class="p-8 text-center"><h2 class="text-2xl font-bold text-primary">Students</h2><p class="text-on-surface-variant">Student management module.</p></div>`; }
+
+        function renderCompanies(container, data, role) { container.innerHTML =
+                `<div class="p-8 text-center"><h2 class="text-2xl font-bold text-primary">Companies</h2><p class="text-on-surface-variant">Company management module.</p></div>`; }
+
+        function renderDrives(container, data, role) { container.innerHTML =
+                `<div class="p-8 text-center"><h2 class="text-2xl font-bold text-primary">Drives</h2><p class="text-on-surface-variant">Drive management module.</p></div>`; }
+
+        function renderApplications(container, data, role) { container.innerHTML =
+                `<div class="p-8 text-center"><h2 class="text-2xl font-bold text-primary">Applications</h2><p class="text-on-surface-variant">Application management module.</p></div>`; }
+
+        function renderReports(container, data, role) { container.innerHTML =
+                `<div class="p-8 text-center"><h2 class="text-2xl font-bold text-primary">Reports</h2><p class="text-on-surface-variant">Reports and analytics module.</p></div>`; }
+
+        function renderAnalytics(container, data) { container.innerHTML =
+                `<div class="p-8 text-center"><h2 class="text-2xl font-bold text-primary">Analytics</h2><p class="text-on-surface-variant">Advanced analytics dashboard.</p></div>`; }
+
+        function renderProfile(container, data) {
+            const user = AppState.currentUser;
+            container.innerHTML =
+                `
+                <div class="p-8 text-center"><h2 class="text-2xl font-bold text-primary">My Profile</h2><p class="text-on-surface-variant">${user.name} · ${user.email} · ${user.role}</p></div>`;
+        }
+
+        function renderShortlisting(container, data) { container.innerHTML =
+                `<div class="p-8 text-center"><h2 class="text-2xl font-bold text-primary">Shortlisting</h2><p class="text-on-surface-variant">Shortlist candidates for drives.</p></div>`; }
+
+        function renderOffers(container, data) { container.innerHTML =
+                `<div class="p-8 text-center"><h2 class="text-2xl font-bold text-primary">Offers</h2><p class="text-on-surface-variant">Manage placement offers.</p></div>`; }
+
+        function renderPlacements(container, data) { container.innerHTML =
+                `<div class="p-8 text-center"><h2 class="text-2xl font-bold text-primary">Placements</h2><p class="text-on-surface-variant">Placement records.</p></div>`; }
+
+        function renderStudentDrives(container, data) { container.innerHTML =
+                `<div class="p-8 text-center"><h2 class="text-2xl font-bold text-primary">Browse Drives</h2><p class="text-on-surface-variant">Available drives for application.</p></div>`; }
+
+        function renderMyApplications(container, data) { container.innerHTML =
+                `<div class="p-8 text-center"><h2 class="text-2xl font-bold text-primary">My Applications</h2><p class="text-on-surface-variant">Track your applications.</p></div>`; }
+
+        function renderStudentForm(container, data) { container.innerHTML =
+                `<div class="p-8 text-center"><h2 class="text-2xl font-bold text-primary">Placement Form</h2><p class="text-on-surface-variant">Complete your placement registration.</p></div>`; }
+
+        function renderPrincipalReports(container, data) { container.innerHTML =
+                `<div class="p-8 text-center"><h2 class="text-2xl font-bold text-primary">NBA / NAAC Reports</h2><p class="text-on-surface-variant">Accreditation and institutional reports.</p></div>`; }
+
+        function renderPrincipalStats(container, data) { container.innerHTML =
+                `<div class="p-8 text-center"><h2 class="text-2xl font-bold text-primary">Institutional Stats</h2><p class="text-on-surface-variant">Detailed institutional statistics.</p></div>`; }
+
+        function renderClerkEntry(container, data) { container.innerHTML =
+                `<div class="p-8 text-center"><h2 class="text-2xl font-bold text-primary">Data Entry</h2><p class="text-on-surface-variant">Enter placement data.</p></div>`; }
+
+        function renderSettings(container) { container.innerHTML =
+                `<div class="p-8 text-center"><h2 class="text-2xl font-bold text-primary">Settings</h2><p class="text-on-surface-variant">System settings.</p></div>`; }
+
+        // ================================================================
+        // EVENT BINDING
+        // ================================================================
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('loginForm').addEventListener('submit', handleLogin);
+            document.getElementById('logoutBtn').addEventListener('click', logout);
+            document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+                const sidebar = document.getElementById('sidebar');
+                sidebar.classList.toggle('hidden');
+            });
+            // Global search
+            document.getElementById('globalSearch').addEventListener('keydown', function(e) {
+                if (e.key === 'Enter') {
+                    showToast('Search: ' + this.value, 'info');
+                    this.value = '';
+                }
+            });
+            // Notification bell
+            document.getElementById('notifBell').addEventListener('click', function() {
+                showToast('No new notifications', 'info');
+            });
+        });
+
+        // ================================================================
+        // CHART HELPERS (stubs)
+        // ================================================================
+        function renderBranchChart(data) {}
+        function renderTrendChart() {}
+        function renderPrincipalBranchChart(data) {}
+        function renderPrincipalCategoryChart(data) {}
+        function renderStatsCategoryChart(data) {}
+        function renderStatsPackageChart(data) {}
+
+        // ================================================================
+        // INITIAL LOAD
+        // ================================================================
+        async function initApp() {
+            await loadAllData();
+            showView('login');
+        }
+        initApp();
+    </script>
+</body>
+</html>
