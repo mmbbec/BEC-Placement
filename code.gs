@@ -1,67 +1,7 @@
-const REGISTRY_SPREADSHEET_ID = "YOUR_USER_REGISTRY_SPREADSHEET_ID"; // Paste your Sheet ID
-const ADMIN_EMAIL = "mmbbec@gmail.com";
-const ADMIN_PASS = "admin123";
+// =============== NEW FUNCTIONS ===============
 
-// Pre-configured Mock Test Profiles (No real emails needed to test!)
-const MOCK_PROFILES = {
-  officer: {
-    name: "Dr. S G Kambalimath",
-    role: "Placement Officer",
-    email: "test.officer@example.com"
-  },
-  principal: {
-    name: "Dr. Baswaraj Hiremath",
-    role: "Principal",
-    email: "test.principal@example.com"
-  },
-  staff: {
-    name: "Prof. Ramesh (Coordinator)",
-    role: "Placement Staff",
-    email: "test.staff@example.com"
-  },
-  student_eligible: {
-    name: "Rahul Patil",
-    role: "Student",
-    email: "test.student1@example.com",
-    usn: "2BA23CS045",
-    branch: "CSE",
-    cgpa: 8.20,
-    backlogs: 0,
-    currentPkg: 0
-  },
-  student_placed: {
-    name: "Pooja Kulkarni",
-    role: "Student",
-    email: "test.student2@example.com",
-    usn: "2BA23ME012",
-    branch: "MECH",
-    cgpa: 6.20,
-    backlogs: 1,
-    currentPkg: 4.0
-  }
-};
-
-function doGet() {
-  return HtmlService.createHtmlOutputFromFile('Index')
-    .setTitle('BEC Placement Portal [TEST MODE]')
-    .setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
-}
-
-// 1. Return selected test identity
-function getTestSession(profileKey) {
-  return { success: true, profile: MOCK_PROFILES[profileKey] || MOCK_PROFILES.officer };
-}
-
-// 2. Admin Fixed Login
-function loginAsAdmin(email, password) {
-  if (email.trim().toLowerCase() === ADMIN_EMAIL && password === ADMIN_PASS) {
-    return { success: true, name: "System Admin", role: "Super Admin", email: ADMIN_EMAIL };
-  }
-  return { success: false, error: "Invalid Admin Email or Password." };
-}
-
-// 3. Post a Drive
 function createRecruitmentDrive(driveData) {
+  // driveData: { company, ctc, branches, minCgpa, maxCgpa, maxBacklogs, placedPolicy, minDiff }
   try {
     const ss = SpreadsheetApp.openById(REGISTRY_SPREADSHEET_ID);
     let driveSheet = ss.getSheetByName("Recruitment_Drives");
@@ -70,7 +10,6 @@ function createRecruitmentDrive(driveData) {
       driveSheet.appendRow(["DriveID", "Company", "CTC_LPA", "EligibleBranches", "MinCGPA", "MaxCGPA", "MaxBacklogs", "PlacedPolicy", "MinPackageDiff", "Status", "CreatedDate"]);
       driveSheet.getRange("A1:K1").setFontWeight("bold").setBackground("#e2e8f0");
     }
-
     const driveId = "DRV-" + Utilities.getUuid().slice(0, 5).toUpperCase();
     driveSheet.appendRow([
       driveId,
@@ -85,17 +24,22 @@ function createRecruitmentDrive(driveData) {
       "ACTIVE",
       new Date().toLocaleString('en-IN')
     ]);
-
     return { success: true, message: `Drive for ${driveData.company} (${driveId}) published!` };
   } catch (err) {
     return { success: false, error: err.message };
   }
 }
 
-// 4. Fetch Drives Evaluated Against Current Selected Student
-function getEligibleDrivesForStudent(profileKey) {
+function getEligibleDrivesForStudent(studentUsn) {
   try {
-    const student = MOCK_PROFILES[profileKey] || MOCK_PROFILES.student_eligible;
+    // Fetch student data from your existing student sheet (or mock)
+    // Assuming you have a function getStudentByUsn(usn) that returns the student object
+    // For simplicity, we'll fetch from the existing data source.
+    // In your current setup, you probably have a sheet "Students".
+    // We'll implement a helper.
+    const student = getStudentByUsn(studentUsn);
+    if (!student) return { success: false, error: "Student not found" };
+
     const ss = SpreadsheetApp.openById(REGISTRY_SPREADSHEET_ID);
     const driveSheet = ss.getSheetByName("Recruitment_Drives");
     const appSheet = ss.getSheetByName("Drive_Applications");
@@ -104,7 +48,7 @@ function getEligibleDrivesForStudent(profileKey) {
       return { success: true, drives: [], student: student };
     }
 
-    // Check applied list
+    // Get applied drives
     const appliedDrives = new Set();
     if (appSheet && appSheet.getLastRow() > 1) {
       const appData = appSheet.getDataRange().getValues();
@@ -181,10 +125,11 @@ function getEligibleDrivesForStudent(profileKey) {
   }
 }
 
-// 5. Apply for Drive + Send Email to Custom Address
-function applyForDrive(driveId, profileKey, customEmail) {
+function applyForDrive(driveId, studentUsn, customEmail) {
   try {
-    const student = MOCK_PROFILES[profileKey] || MOCK_PROFILES.student_eligible;
+    const student = getStudentByUsn(studentUsn);
+    if (!student) return { success: false, error: "Student not found" };
+
     const ss = SpreadsheetApp.openById(REGISTRY_SPREADSHEET_ID);
     let appSheet = ss.getSheetByName("Drive_Applications");
     if (!appSheet) {
@@ -212,15 +157,15 @@ function applyForDrive(driveId, profileKey, customEmail) {
       appId, driveId, company, student.usn, student.name, student.branch, student.cgpa, timestamp, "APPLIED"
     ]);
 
-    // Send confirmation email to test recipient
+    // Send email to custom address
     const recipient = (customEmail && customEmail.includes("@")) ? customEmail.trim() : Session.getActiveUser().getEmail();
     if (recipient) {
       MailApp.sendEmail({
         to: recipient,
-        subject: `[TEST MODE] Application Confirmed: ${company} [${appId}]`,
+        subject: `[Placement] Application Confirmed: ${company} [${appId}]`,
         htmlBody: `
           <div style="font-family: sans-serif; padding: 16px; border: 1px solid #cbd5e1; border-radius: 8px;">
-            <h3 style="color:#0284c7; margin-top:0;">BEC Placement Cell (Test Run)</h3>
+            <h3 style="color:#0284c7; margin-top:0;">BEC Placement Cell</h3>
             <p>Registration successful for <b>${student.name}</b> (${student.usn})!</p>
             <ul>
               <li><b>Company:</b> ${company} (${ctc} LPA)</li>
@@ -228,7 +173,7 @@ function applyForDrive(driveId, profileKey, customEmail) {
               <li><b>Application ID:</b> ${appId}</li>
               <li><b>Timestamp:</b> ${timestamp}</li>
             </ul>
-            <p style="font-size:0.8rem; color:#64748b;">This test email was routed to: ${recipient}</p>
+            <p style="font-size:0.8rem; color:#64748b;">This confirmation was sent to: ${recipient}</p>
           </div>
         `
       });
@@ -238,4 +183,28 @@ function applyForDrive(driveId, profileKey, customEmail) {
   } catch (err) {
     return { success: false, error: err.message };
   }
+}
+
+// Helper to get student from sheet (adapt to your existing sheet structure)
+function getStudentByUsn(usn) {
+  // This is a placeholder – you likely have a getStudents() function already.
+  // Implement it to fetch from your "Students" sheet.
+  // Example:
+  const ss = SpreadsheetApp.openById(REGISTRY_SPREADSHEET_ID);
+  const sheet = ss.getSheetByName("Students");
+  if (!sheet) return null;
+  const data = sheet.getDataRange().getValues();
+  for (let i = 1; i < data.length; i++) {
+    if (String(data[i][0]).toUpperCase() === String(usn).toUpperCase()) {
+      return {
+        usn: data[i][0],
+        name: data[i][1],
+        branch: data[i][2],
+        cgpa: parseFloat(data[i][3]) || 0,
+        backlogs: parseInt(data[i][4]) || 0,
+        currentPkg: parseFloat(data[i][5]) || 0
+      };
+    }
+  }
+  return null;
 }
